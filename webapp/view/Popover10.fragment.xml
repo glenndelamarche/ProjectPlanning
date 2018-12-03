@@ -1,0 +1,117 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover10">
+    <ResponsivePopover contentHeight="660px" contentWidth="450px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="New User" verticalScrolling="true" visible="true">
+        <content>
+            <Table width="auto" noDataText="No data" mode="None" showSeparators="None" growing="true" growingThreshold="20" class="sapUiResponsiveMargin" headerDesign="Plain">
+                
+                <columns>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="First name" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Last name" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Email" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Phone" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Birthdate" text="" titleActive="false" visible="true"/>
+                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Gender" text="" titleActive="false" visible="true"/>
+                            <ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+                                <items>
+                                    <core:Item text="Item" enabled="true" key="Item"/>
+                                    <core:Item text="Item" enabled="true" key="Item"/>
+                                    <core:Item text="Item" enabled="true" key="Item"/>
+                                </items>
+                            </ComboBox>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Nationality" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Begin-date" text="" titleActive="false" visible="true"/>
+                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Address: Street" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Address: House number" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Address: Zipcode" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Address: City" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <ObjectIdentifier title="Address: Country" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <beginButton>
+            <Button text="Add" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+        </beginButton>
+        <customHeader/>
+        <endButton>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+        </endButton>
+        <subHeader/>
+    </ResponsivePopover>
+</core:FragmentDefinition>
