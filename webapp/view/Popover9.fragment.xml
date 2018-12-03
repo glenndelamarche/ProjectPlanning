@@ -26,19 +26,19 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Project Name" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Company" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Budget" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
@@ -56,13 +56,13 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Description" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Deliverables url" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
