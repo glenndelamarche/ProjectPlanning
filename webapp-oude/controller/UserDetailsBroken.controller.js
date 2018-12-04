@@ -1,12 +1,12 @@
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
-	"./Popover16", "./Popover22",
+	"./Popover6", "./Popover12", "./Popover7",
 	"./utilities",
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Popover16, Popover22, Utilities, History) {
+], function(BaseController, MessageBox, Popover6, Popover12, Popover7, Utilities, History) {
 	"use strict";
 
-	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.UserDetails", {
+	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.UserDetailsBroken", {
 		handleRouteMatched: function(oEvent) {
 			var sAppId = "App5bf2850a07da730110b7b171";
 
@@ -45,12 +45,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onIconPress: function(oEvent) {
 
-			var sPopoverName = "Popover16";
+			var sPopoverName = "Popover6";
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 
 			if (!oPopover) {
-				oPopover = new Popover16(this.getView());
+				oPopover = new Popover6(this.getView());
+				this.mPopovers[sPopoverName] = oPopover;
+
+				oPopover.getControl().setPlacement("Auto");
+
+				// For navigation.
+				oPopover.setRouter(this.oRouter);
+			}
+
+			var oSource = oEvent.getSource();
+
+			oPopover.open(oSource);
+
+		},
+		_onIconPress1: function(oEvent) {
+
+			var sPopoverName = "Popover7";
+			this.mPopovers = this.mPopovers || {};
+			var oPopover = this.mPopovers[sPopoverName];
+
+			if (!oPopover) {
+				oPopover = new Popover7(this.getView());
 				this.mPopovers[sPopoverName] = oPopover;
 
 				oPopover.getControl().setPlacement("Auto");
@@ -66,12 +87,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onButtonPress: function(oEvent) {
 
-			var sPopoverName = "Popover22";
+			var sPopoverName = "Popover12";
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 
 			if (!oPopover) {
-				oPopover = new Popover22(this.getView());
+				oPopover = new Popover12(this.getView());
 				this.mPopovers[sPopoverName] = oPopover;
 
 				oPopover.getControl().setPlacement("Auto");
@@ -145,7 +166,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			this.oRouter.getTarget("UserDetails").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
+			this.oRouter.getTarget("UserDetailsBroken").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 			var oView = this.getView();
 			oView.addEventDelegate({
 				onBeforeShow: function() {
@@ -154,7 +175,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						if (oPage.getShowNavButton && !oPage.getShowNavButton()) {
 							oPage.setShowNavButton(true);
 							oPage.attachNavButtonPress(function() {
-								this.oRouter.navTo("ScrollBar", {}, true);
+								this.oRouter.navTo("", {}, true);
 							}.bind(this));
 						}
 					}
@@ -168,23 +189,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oView.setModel(oModel, "staticDataModel");
 			self.oBindingParameters = {};
 
-			oData["sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366"] = {};
+			oData["sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586"] = {};
 
-			oData["sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366"]["data"] = [{
+			oData["sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586"]["data"] = [{
 				"dim0": "Communication",
 				"mea0": "80",
 				"__id": 0
 			}, {
-				"dim0": "Quantity",
+				"dim0": "Quality",
 				"mea0": "70",
 				"__id": 1
 			}, {
-				"dim0": "Quality",
+				"dim0": "Quantity",
 				"mea0": "60",
 				"__id": 2
 			}, {
 				"dim0": "Motivation",
-				"mea0": "80",
+				"mea0": "70",
 				"__id": 3
 			}, {
 				"dim0": "Teamplayer",
@@ -192,8 +213,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				"__id": 4
 			}];
 
-			self.oBindingParameters['sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366'] = {
-				"path": "/sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366/data",
+			self.oBindingParameters['sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586'] = {
+				"path": "/sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586/data",
 				"model": "staticDataModel",
 				"parameters": {}
 			};
@@ -211,7 +232,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				return oValueToFormat;
 			}
 
-			var aDimensions = oView.byId("sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366").getDimensions();
+			var aDimensions = oView.byId("sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586").getDimensions();
 			aDimensions.forEach(function(oDimension) {
 				oDimension.setTextFormatter(dateDimensionFormatter);
 			});
@@ -224,8 +245,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				oBindingParameters = this.oBindingParameters,
 				oView = this.getView();
 
-			oChart = oView.byId("sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366");
-			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366']);
+			oChart = oView.byId("sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586");
+			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-items-sap_m_IconTabFilter-5-87kc0ivf53grds3vjuu9ph8s3_S3-content-sap_chart_LineChart-1542634316586']);
 
 		}
 	});
