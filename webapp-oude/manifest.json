@@ -87,14 +87,14 @@
 					"controlAggregation": "masterPages",
 					"viewName": "ScrollBar",
 					"viewId": "ScrollBar",
-					"viewLevel": 4,
+					"viewLevel": 1,
 					"transition": "slide"
 				},
 				"ProjectDetails": {
 					"controlAggregation": "detailPages",
 					"viewName": "ProjectDetails",
 					"viewId": "ProjectDetails",
-					"viewLevel": 3,
+					"viewLevel": 1,
 					"transition": "slide"
 				},
 				"UserDetailsBroken": {
@@ -115,7 +115,7 @@
 					"controlAggregation": "detailPages",
 					"viewName": "UserDetails",
 					"viewId": "UserDetails",
-					"viewLevel": 2,
+					"viewLevel": 1,
 					"transition": "slide"
 				}
 			},
