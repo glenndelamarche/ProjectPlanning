@@ -1,5 +1,5 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover9" xmlns="sap.m">
-    <ResponsivePopover contentHeight="450px" contentWidth="650px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="New Project" verticalScrolling="true" visible="true">
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover8" xmlns="sap.m">
+    <ResponsivePopover contentHeight="550px" contentWidth="350px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="New Project" verticalScrolling="true" visible="true">
         <content>
             <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                 <infoToolbar>
@@ -13,12 +13,14 @@
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Product" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header/>
+                        <header>
+                            <Text text="Supplier" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </header>
                         <footer/>
                     </Column>
                 </columns>
@@ -67,26 +69,16 @@
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
-                            <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                            <ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
-                                <items>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                </items>
-                            </ComboBox>
+                            <ObjectIdentifier title="Project Name" text="" titleActive="false" visible="true"/>
+                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
         </content>
-        <beginButton>
-            <Button text="Add" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-        </beginButton>
+        <beginButton/>
         <customHeader/>
-        <endButton>
-            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
-        </endButton>
+        <endButton/>
         <subHeader/>
     </ResponsivePopover>
 </core:FragmentDefinition>
