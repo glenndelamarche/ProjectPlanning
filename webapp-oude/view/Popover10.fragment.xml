@@ -1,15 +1,8 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover10" xmlns="sap.m">
-    <ResponsivePopover contentHeight="650px" contentWidth="450px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="New User" verticalScrolling="true" visible="true">
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover10">
+    <ResponsivePopover contentHeight="660px" contentWidth="450px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="New User" verticalScrolling="true" visible="true">
         <content>
-            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
-                <infoToolbar>
-                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
-                        <content>
-                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                        </content>
-                    </Toolbar>
-                </infoToolbar>
-                <headerToolbar/>
+            <Table width="auto" noDataText="No data" mode="None" showSeparators="None" growing="true" growingThreshold="20" class="sapUiResponsiveMargin" headerDesign="Plain">
+                
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
@@ -28,25 +21,25 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="First name" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Last name" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Email" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Phone" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
@@ -70,7 +63,7 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Nationality" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
@@ -82,31 +75,31 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Address: Street" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Address: House number" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Address: Zipcode" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Address: City" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Address: Country" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea rows="1" cols="20" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                 </items>
