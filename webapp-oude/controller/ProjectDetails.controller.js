@@ -138,7 +138,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						if (oPage.getShowNavButton && !oPage.getShowNavButton()) {
 							oPage.setShowNavButton(true);
 							oPage.attachNavButtonPress(function() {
-								this.oRouter.navTo("ScrollBar", {}, true);
+								this.oRouter.navTo("", {}, true);
 							}.bind(this));
 						}
 					}
