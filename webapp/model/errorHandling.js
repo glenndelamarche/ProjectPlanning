@@ -54,7 +54,7 @@ sap.ui.define([
                     bMessageOpen: false
                 };
 
-            // var oModels = oComponent.getManifestEntry("sap.ui5").models; // TODO use this once "" modelName is properly managed
+             //var oModels = oComponent.getManifestEntry("sap.ui5").models; //TODO use this once "" modelName is properly managed
             var oModels = oComponent.oModels;
 
             for (var sModel in oModels) {
