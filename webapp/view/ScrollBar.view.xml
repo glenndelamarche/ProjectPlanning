@@ -1,11 +1,11 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.ScrollBar" xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.sap.build.standard.untitledPrototype.controller.ScrollBar" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page title="" showHeader="true" showFooter="true" showNavButton="false">
         <content>
             <IconTabBar expandable="true" expanded="true" applyContentPadding="true" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok" class="sapUiNoContentPadding">
                 <items>
                     <IconTabFilter icon="sap-icon://group-2" iconColor="Default" text="Project" count="" design="Vertical" showAll="false" textDirection="LTR" enabled="true" visible="true" tooltip="" iconDensityAware="false">
                         <content>
-                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress">
+                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress" items="{path:'/ProjectSet',parameters:{select:'Name,ProjectId'}}">
                                 <infoToolbar/>
                                 <headerToolbar>
                                     <Toolbar enabled="true" visible="true" width="" design="Solid">
@@ -15,17 +15,7 @@
                                     </Toolbar>
                                 </headerToolbar>
                                 <items>
-                                    <ObjectListItem intro="" title="Project1" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
-                                        <attributes/>
-                                        <firstStatus/>
-                                        <secondStatus/>
-                                    </ObjectListItem>
-                                    <ObjectListItem intro="" title="Project2" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
-                                        <attributes/>
-                                        <firstStatus/>
-                                        <secondStatus/>
-                                    </ObjectListItem>
-                                    <ObjectListItem intro="" title="Project3" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
+                                    <ObjectListItem intro="" title="{Name}" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false" number="{ProjectId}">
                                         <attributes/>
                                         <firstStatus/>
                                         <secondStatus/>

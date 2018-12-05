@@ -1,9 +1,13 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
+
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover9", "./Popover10",
 	"./utilities",
-	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Popover9, Popover10, Utilities, History) {
+	"sap/ui/core/routing/History",
+	"sap/ui/model/json/JSONModel"
+], function(BaseController, MessageBox, Popover9, Popover10, Utilities, History, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.ScrollBar", {
@@ -266,7 +270,37 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("ScrollBar").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
-
+			
+		
+		},
+		getProjects: function(){
+			var res = new JSONModel();
+			$.ajax({
+				type: 'GET',
+				url: "/ProjectSet",
+				async: false,
+				beforeSend: function (xhr) {
+    				xhr.setRequestHeader ("Authorization", "Basic " + btoa("DEVXM-124" + ":" + "phE3mUFk"));
+				}
+			}).success(function (results) {
+				res = results;
+			})
+			.fail(function (err) {
+				if (err !== undefined) {
+					var oErrorResponse = $.parseJSON(err.responseText);
+					sap.m.MessageToast.show(oErrorResponse.message, {
+						duration: 6000
+					});
+				} else {
+					sap.m.MessageToast.show("Unknown error!");
+				}
+			});
+			var group = this.groupData(res);
+			var oModel = new JSONModel({
+				"projects": group
+			});
+			console.log(oModel);
+			//this.getView().setModel(oModel, "signModel");
 		}
 	});
 }, /* bExport= */ true);

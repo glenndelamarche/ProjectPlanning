@@ -12,10 +12,26 @@
 		},
 		"ach": "ach",
 		"resources": "resources.json",
-		"dataSources": {},
+		"dataSources": {
+			"YXM138_FLEXSO_SRV_02": {
+				"uri": "/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/YXM138_FLEXSO_SRV_02/metadata.xml"
+				}
+			},
+			"ODataAnnotation1": {
+				"uri": "",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": ""
+				}
+			}
+		},
 		"sourceTemplate": {
-			"id": "sap.ui.ui5-template-plugin.2masterdetail",
-			"version": "1.32.5"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
 		}
 	},
 	"sap.fiori": {
@@ -64,6 +80,20 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"uri": "i18n/i18n.properties"
+			},
+			"": {
+				"uri": "/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"disableHeadRequestForToken": "true",
+					"useBatch": false
+				},
+				"dataSource": "YXM138_FLEXSO_SRV_02",
+				"preload": true
+
 			}
 		},
 		"routing": {
@@ -76,10 +106,7 @@
 				"controlAggregation": "detailPages",
 				"async": false,
 				"bypassed": {
-					"target": [
-						"ProjectDetails",
-						"ScrollBar"
-					]
+					"target": ["ProjectDetails", "ScrollBar"]
 				}
 			},
 			"targets": {
@@ -119,56 +146,31 @@
 					"transition": "slide"
 				}
 			},
-			"routes": [
-				{
-					"pattern": "ScrollBar",
-					"name": "ScrollBar",
-					"target": [
-						"ProjectDetails",
-						"ScrollBar"
-					]
-				},
-				{
-					"pattern": "ScrollBar/ProjectDetails",
-					"name": "ProjectDetails",
-					"target": [
-						"ScrollBar",
-						"ProjectDetails"
-					]
-				},
-				{
-					"pattern": "ScrollBar/UserDetailsBroken",
-					"name": "UserDetailsBroken",
-					"target": [
-						"ScrollBar",
-						"UserDetailsBroken"
-					]
-				},
-				{
-					"pattern": "ScrollBar/Stats",
-					"name": "Stats",
-					"target": [
-						"ScrollBar",
-						"Stats"
-					]
-				},
-				{
-					"pattern": "ScrollBar/UserDetails",
-					"name": "UserDetails",
-					"target": [
-						"ScrollBar",
-						"UserDetails"
-					]
-				},
-				{
-					"pattern": "",
-					"name": "default",
-					"target": [
-						"ProjectDetails",
-						"ScrollBar"
-					]
-				}
-			]
+			"routes": [{
+				"pattern": "ScrollBar",
+				"name": "ScrollBar",
+				"target": ["ProjectDetails", "ScrollBar"]
+			}, {
+				"pattern": "ScrollBar/ProjectDetails",
+				"name": "ProjectDetails",
+				"target": ["ScrollBar", "ProjectDetails"]
+			}, {
+				"pattern": "ScrollBar/UserDetailsBroken",
+				"name": "UserDetailsBroken",
+				"target": ["ScrollBar", "UserDetailsBroken"]
+			}, {
+				"pattern": "ScrollBar/Stats",
+				"name": "Stats",
+				"target": ["ScrollBar", "Stats"]
+			}, {
+				"pattern": "ScrollBar/UserDetails",
+				"name": "UserDetails",
+				"target": ["ScrollBar", "UserDetails"]
+			}, {
+				"pattern": "",
+				"name": "default",
+				"target": ["ProjectDetails", "ScrollBar"]
+			}]
 		}
 	}
 }
