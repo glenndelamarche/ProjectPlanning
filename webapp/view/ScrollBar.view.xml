@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.sap.build.standard.untitledPrototype.controller.ScrollBar" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.sap.build.standard.untitledPrototype.controller.ScrollBar">
     <Page title="" showHeader="true" showFooter="true" showNavButton="false">
         <content>
             <IconTabBar expandable="true" expanded="true" applyContentPadding="true" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok" class="sapUiNoContentPadding">
