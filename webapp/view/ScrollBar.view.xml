@@ -15,7 +15,7 @@
                                     </Toolbar>
                                 </headerToolbar>
                                 <items>
-                                    <ObjectListItem intro="" title="{Name}" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false" number="{ProjectId}">
+                                    <ObjectListItem intro="" title="{Name}" numberUnit="" numberState="None" type="Navigation" selected="false" showMarkers="false" number="{ProjectId}" press="_onObjectListItemPress">
                                         <attributes/>
                                         <firstStatus/>
                                         <secondStatus/>

@@ -132,9 +132,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onObjectListItemPress: function(oEvent) {
-
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
-
+				console.log(oBindingContext);
 			return new Promise(function(fnResolve) {
 				this.doNavigate("ProjectDetails", oBindingContext, fnResolve, "");
 			}.bind(this)).catch(function(err) {
@@ -142,7 +141,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					MessageBox.error(err.message);
 				}
 			});
-
 		},
 		doNavigate: function(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
 			var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
@@ -212,7 +210,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onButtonPress: function(oEvent) {
-
 			var oBindingContext = oEvent.getSource().getBindingContext();
 
 			return new Promise(function(fnResolve) {

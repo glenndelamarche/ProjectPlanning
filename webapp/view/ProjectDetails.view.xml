@@ -1,7 +1,7 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.ProjectDetails" xmlns="sap.m" xmlns:core="sap.ui.core">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.ProjectDetails" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page title="Project details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="Company" title="Project1" icon="sap-icon://group-2" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="Company" title="{Name}" icon="sap-icon://group-2" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true" cd:w5g.dt.context="/ProjectSet">
                 <attributes/>
                 <statuses/>
                 <markers/>
@@ -38,7 +38,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Project name" text="" titleActive="false" visible="true"/>
-                                            <Text text="Project1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Name}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -56,7 +56,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Budget" text="" titleActive="false" visible="true"/>
-                                            <Text text="10.000EUR" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Budget} + EUR" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">

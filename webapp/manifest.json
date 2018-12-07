@@ -18,7 +18,7 @@
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
-					"localUri": "localService/YXM138_FLEXSO_SRV_02/metadata.xml?sap-client=211"
+					"localUri": "localService/YXM138_FLEXSO_SRV_02/metadata.xml"
 				}
 			},
 			"ODataAnnotation1": {
@@ -82,7 +82,7 @@
 				"uri": "i18n/i18n.properties"
 			},
 			"": {
-				"uri": "/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/?sap-client=211",
+				"uri": "/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/",
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
@@ -90,11 +90,10 @@
 					"defaultCountMode": "Request",
 					"disableHeadRequestForToken": "true",
 					"useBatch": false,
-					"defaultClient":"211"
+					"defaultClient": "211"
 				},
 				"dataSource": "YXM138_FLEXSO_SRV_02",
 				"preload": true
-
 			}
 		},
 		"routing": {
@@ -125,13 +124,6 @@
 					"viewLevel": 3,
 					"transition": "slide"
 				},
-				"UserDetailsBroken": {
-					"controlAggregation": "detailPages",
-					"viewName": "UserDetailsBroken",
-					"viewId": "UserDetailsBroken",
-					"viewLevel": 1,
-					"transition": "slide"
-				},
 				"Stats": {
 					"controlAggregation": "detailPages",
 					"viewName": "Stats",
@@ -152,13 +144,9 @@
 				"name": "ScrollBar",
 				"target": ["ProjectDetails", "ScrollBar"]
 			}, {
-				"pattern": "ScrollBar/ProjectDetails",
+				"pattern": "ScrollBar/ProjectDetails{SelectedItem}",
 				"name": "ProjectDetails",
 				"target": ["ScrollBar", "ProjectDetails"]
-			}, {
-				"pattern": "ScrollBar/UserDetailsBroken",
-				"name": "UserDetailsBroken",
-				"target": ["ScrollBar", "UserDetailsBroken"]
 			}, {
 				"pattern": "ScrollBar/Stats",
 				"name": "Stats",
