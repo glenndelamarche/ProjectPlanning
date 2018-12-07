@@ -144,7 +144,7 @@
 				"name": "ScrollBar",
 				"target": ["ProjectDetails", "ScrollBar"]
 			}, {
-				"pattern": "ScrollBar/ProjectDetails{SelectedItem}",
+				"pattern": "ScrollBar/ProjectDetails/{SelectedItem}",
 				"name": "ProjectDetails",
 				"target": ["ScrollBar", "ProjectDetails"]
 			}, {

@@ -5,7 +5,7 @@
                 <items>
                     <IconTabFilter icon="sap-icon://group-2" iconColor="Default" text="Project" count="" design="Vertical" showAll="false" textDirection="LTR" enabled="true" visible="true" tooltip="" iconDensityAware="false">
                         <content>
-                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress" items="{path:'/ProjectSet',parameters:{select:'Name,ProjectId'}}">
+                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress" items="{/ProjectSet}">
                                 <infoToolbar/>
                                 <headerToolbar>
                                     <Toolbar enabled="true" visible="true" width="" design="Solid">

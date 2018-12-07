@@ -133,18 +133,26 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onObjectListItemPress: function(oEvent) {
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
-				console.log(oBindingContext);
+			
+			// Get Property of the Clicked Item. i.e. PO number of the item which was clicked
+			var selectItem = oBindingContext.toString().match(/\d/g);
+			selectItem = selectItem.join("");
+			
+			// Tell the Router to Navigate To Route_PODetail which is linked to V_PODetail view
+			this.oRouter.navTo("ProjectDetails", { SelectedItem: selectItem});
+		/*
 			return new Promise(function(fnResolve) {
 				this.doNavigate("ProjectDetails", oBindingContext, fnResolve, "");
 			}.bind(this)).catch(function(err) {
 				if (err !== undefined) {
 					MessageBox.error(err.message);
 				}
-			});
+			});*/
 		},
 		doNavigate: function(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
 			var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
 			var oModel = (oBindingContext) ? oBindingContext.getModel() : null;
+
 
 			var sEntityNameSet;
 			if (sPath !== null && sPath !== "") {
@@ -270,34 +278,5 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			
 		
 		},
-		getProjects: function(){
-			var res = new JSONModel();
-			$.ajax({
-				type: 'GET',
-				url: "/ProjectSet",
-				async: false,
-				beforeSend: function (xhr) {
-    				xhr.setRequestHeader ("Authorization", "Basic " + btoa("DEVXM-124" + ":" + "phE3mUFk"));
-				}
-			}).success(function (results) {
-				res = results;
-			})
-			.fail(function (err) {
-				if (err !== undefined) {
-					var oErrorResponse = $.parseJSON(err.responseText);
-					sap.m.MessageToast.show(oErrorResponse.message, {
-						duration: 6000
-					});
-				} else {
-					sap.m.MessageToast.show("Unknown error!");
-				}
-			});
-			var group = this.groupData(res);
-			var oModel = new JSONModel({
-				"projects": group
-			});
-			console.log(oModel);
-			//this.getView().setModel(oModel, "signModel");
-		}
 	});
 }, /* bExport= */ true);
