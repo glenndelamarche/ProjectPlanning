@@ -1,9 +1,13 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
+
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover9", "./Popover10",
 	"./utilities",
-	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Popover9, Popover10, Utilities, History) {
+	"sap/ui/core/routing/History",
+	"sap/ui/model/json/JSONModel"
+], function(BaseController, MessageBox, Popover9, Popover10, Utilities, History, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.ScrollBar", {
@@ -128,21 +132,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onObjectListItemPress: function(oEvent) {
-
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
-
+			
+			// Get Property of the Clicked Item. i.e. PO number of the item which was clicked
+			var selectItem = oBindingContext.toString().match(/\d/g);
+			selectItem = selectItem.join("");
+			
+			// Tell the Router to Navigate To Route_PODetail which is linked to V_PODetail view
+			this.oRouter.navTo("ProjectDetails", { SelectedItem: selectItem});
+		/*
 			return new Promise(function(fnResolve) {
 				this.doNavigate("ProjectDetails", oBindingContext, fnResolve, "");
 			}.bind(this)).catch(function(err) {
 				if (err !== undefined) {
 					MessageBox.error(err.message);
 				}
-			});
-
+			});*/
 		},
 		doNavigate: function(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
 			var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
 			var oModel = (oBindingContext) ? oBindingContext.getModel() : null;
+
 
 			var sEntityNameSet;
 			if (sPath !== null && sPath !== "") {
@@ -208,7 +218,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onButtonPress: function(oEvent) {
-
 			var oBindingContext = oEvent.getSource().getBindingContext();
 
 			return new Promise(function(fnResolve) {
@@ -266,7 +275,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("ScrollBar").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
-
-		}
+			
+		
+		},
 	});
 }, /* bExport= */ true);
