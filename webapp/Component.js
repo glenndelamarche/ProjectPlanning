@@ -24,6 +24,7 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function() {
+			
 			this.oListSelector = new ListSelector();
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
@@ -37,6 +38,9 @@ sap.ui.define([
 			var oApplicationModel = new sap.ui.model.json.JSONModel({});
 			this.setModel(oApplicationModel, "applicationModel");
 
+			this.getModel().bDisableHeadRequestForToken = true;
+			this.getModel().getbUseBatch =false;
+			
 			// call the base component's init function and create the App view
 			UIComponent.prototype.init.apply(this, arguments);
 
