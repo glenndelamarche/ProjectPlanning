@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="YXM138_FLEXSO_SRV_02" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Project" sap:content-version="1">
+				<Key><PropertyRef Name="ProjectId"/></Key><Property Name="ProjectId" Type="Edm.Int32" Nullable="false" sap:label="Number" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="BCV Obj. Name" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Description" Type="Edm.String" MaxLength="255" sap:label="Description" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Company" Type="Edm.String" MaxLength="60" sap:label="BCV Obj. Name" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Budget" Type="Edm.Decimal" Precision="23" Scale="4" sap:label="Budget" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="EndDate" Type="Edm.DateTime" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DeliverablesUrl" Type="Edm.String" MaxLength="255" sap:label="URL" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="ManagerId" Type="Edm.Int32" sap:label="Number" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Active" Type="Edm.Byte" sap:label="0 for false, 1 for true" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Deleted" Type="Edm.Byte" sap:label="0 for false, 1 for true" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityContainer Name="YXM138_FLEXSO_SRV_02_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ProjectSet" EntityType="YXM138_FLEXSO_SRV_02.Project" sap:deletable="false" sap:searchable="true" sap:content-version="1"/></EntityContainer><atom:link rel="self"
+				href="https://webidecp-p1943001504trial.dispatcher.hanatrial.ondemand.com/destinations/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-p1943001504trial.dispatcher.hanatrial.ondemand.com/destinations/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
