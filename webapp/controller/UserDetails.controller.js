@@ -2,45 +2,51 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover16", "./Popover22",
 	"./utilities",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+	"sap/ui/model/FilterType",
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Popover16, Popover22, Utilities, History) {
+], function(BaseController, MessageBox, Popover16, Popover22, Utilities, History, FilterType) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.UserDetails", {
 		handleRouteMatched: function(oEvent) {
+			
+			//main
+			
 			var sAppId = "App5bf2850a07da730110b7b171";
 
-			var oParams = {};
+			var oArgument = oEvent.getParameter("arguments").SelectedItem;
 
-			if (oEvent.mParameters.data.context) {
-				this.sContext = oEvent.mParameters.data.context;
-
-			} else {
-				if (this.getOwnerComponent().getComponentData()) {
-					var patternConvert = function(oParam) {
-						if (Object.keys(oParam).length !== 0) {
-							for (var prop in oParam) {
-								if (prop !== "sourcePrototype") {
-									return prop + "(" + oParam[prop][0] + ")";
-								}
-							}
-						}
-					};
-
-					this.sContext = patternConvert(this.getOwnerComponent().getComponentData().startupParameters);
-
-				}
+			var oView = this.getView();
+			
+			oView.bindElement({
+				path: "/UserSet(" + oArgument + ")"
+			});
+			
+			
+			//managername
+		
+			
+			
+			
+			
+			//userProjects
+			
+			var oSelect, oBinding, aFilters;
+			var sFilterValue = oArgument; // I assume you can get the filter value from somewhere...
+			oSelect = this.getView().byId("projects"); //get the reference to your Select control
+			oBinding = oSelect.getBinding("items");
+			aFilters = [];
+			
+			if (sFilterValue){
+			    aFilters.push( new sap.ui.model.Filter("UserId", sap.ui.model.FilterOperator.EQ, oArgument) );
 			}
+			oBinding.filter(aFilters, FilterType.Application);  //apply the filter
+		
 
-			var oPath;
-
-			if (this.sContext) {
-				oPath = {
-					path: "/" + this.sContext,
-					parameters: oParams
-				};
-				this.getView().bindObject(oPath);
-			}
+			
+		
 
 		},
 		_onIconPress: function(oEvent) {
@@ -85,6 +91,28 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oPopover.open(oSource);
 
 		},
+		
+		_onSavePress: function() {
+			var oModel = this.getView().getModel();
+   var oEntry = {};
+	oEntry.UserId = this.getView().byId("UserId").getValue();
+	oEntry.Fistname = this.getView().byId("Firstname").getValue();
+   //oEntry.Carrid = this.getView().byId("carrid").getValue();
+   //oEntry.Carrname = this.getView().byId("carrname").getValue();
+   //oEntry.Currcode = this.getView().byId("currcode").getValue();
+   //oEntry.Url = this.getView().byId("url").getValue();
+
+   oModel.update ("/UserSet('" + oEntry.UserId + "')", oEntry, {
+    method: "PUT",
+    success: function(data) {
+   //  alert("success");
+    },
+    error: function(e) {
+     //alert("error");
+    }
+   });
+		},
+		
 		applyFiltersAndSorters: function(sControlId, sAggregationName, chartBindingInfo) {
 			if (chartBindingInfo) {
 				var oBindingInfo = chartBindingInfo;
@@ -145,7 +173,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			this.oRouter.getTarget("UserDetails").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
+			this.oRouter.getRoute("UserDetails").attachPatternMatched(this, this.handleRouteMatched, this);
 			var oView = this.getView();
 			oView.addEventDelegate({
 				onBeforeShow: function() {
