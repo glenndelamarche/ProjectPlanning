@@ -6,6 +6,7 @@
                 <statuses/>
                 <markers/>
             </ObjectHeader>
+            <Text id="projectId" text="{ProjectId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
             <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
             <IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
                 <items>
@@ -85,7 +86,7 @@
                     <IconTabSeparator icon="" iconDensityAware="false"/>
                     <IconTabFilter id="teamTab" icon="sap-icon://kpi-managing-my-area" iconColor="Default" text="Team" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table id="teamMembers" width="auto" noDataText="No members" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{                         path : '/TeamMemberSet'                     }"> 
+                            <Table id="teamMembers" width="auto" noDataText="No members" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/TeamMemberSet' }"> 
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>

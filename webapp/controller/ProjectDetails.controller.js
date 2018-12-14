@@ -23,13 +23,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			
 			//managername
 			var oText = oView.byId("managerName");
-			//oView.getModel().read("/ProjectSet(" + oArgument + ")");
-			//var managerId = oView.getModel().getProperty("/ProjectSet(" + oArgument + ")/ManagerId");
+			
 			var managerId = oView.byId("managerId").getText();
 			if (!isNaN(managerId)){
 				oView.getModel().read("/UserSet("+managerId+")", {
 				  success: function(oRetrievedResult) { 
-				  	console.log(oRetrievedResult); 
 				  	var jModel = new sap.ui.model.json.JSONModel(oRetrievedResult);
 					sap.ui.getCore().setModel(jModel);
 				  	oText.setText(jModel.getProperty("/Name"));
