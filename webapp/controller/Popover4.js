@@ -119,7 +119,7 @@ sap.ui.define([
 					oModel.create("/TeamMemberSet", oData, {
 					  merge: true, //updates changed fields
 					  success: function() { },
-					  error: function(oError) { success == false;console.log(oError); }
+					  error: function(oError) { console.log(oError); }
 					});
 			}
 			
