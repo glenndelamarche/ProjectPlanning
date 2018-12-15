@@ -232,7 +232,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onButtonPress1: function(oEvent) {
 
-			var sPopoverName = "Popover9";
+			var sPopoverName = "Popover9"; // +PROJECT
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 
@@ -253,7 +253,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onButtonPress2: function(oEvent) {
 
-			var sPopoverName = "Popover10";
+			var sPopoverName = "Popover10"; // +USER
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 
