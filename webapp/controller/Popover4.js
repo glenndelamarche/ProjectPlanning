@@ -115,20 +115,12 @@ sap.ui.define([
 						    });
 						  }
 						});
-					var success = false;
 					//oModel.update("</yourset>", oData<created_entity)
 					oModel.create("/TeamMemberSet", oData, {
 					  merge: true, //updates changed fields
-					  success: function() { 
-					  	success == true;
-					  },
-					  error: function(oError) { success == false;console.log(oError); }
+					  success: function() { },
+					  error: function(oError) { console.log(oError); }
 					});
-					if (success == true){
-						this.getView().byId('comboboxUsers').setValue(null);
-						this.getView().byId('memberFunction').setValue("");
-					}
-			    
 			}
 			
 		},
