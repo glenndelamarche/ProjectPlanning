@@ -133,11 +133,11 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <ObjectIdentifier title="{Name}" text="ID: {UserId}" titleActive="false" visible="true"/>
+                                            <ObjectIdentifier id="userInfo" title="{Name}" text="ID: {UserId}" titleActive="false" visible="true"/>
                                             <ObjectIdentifier text="" titleActive="false" visible="true" title="{Role}"/>
                                             <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1" />
+                                            
                                         </cells>
                                     </ColumnListItem>
                                 </items>
