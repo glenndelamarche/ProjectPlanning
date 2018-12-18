@@ -1,3 +1,5 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
 	"sap/m/MessageBox",
@@ -27,7 +29,9 @@ sap.ui.define([
 		getOwnerComponent: function() {
 			return this._oView.getController().getOwnerComponent();
 		},
-
+		setUserId: function(userId){
+			$.sap.userId = userId;
+		},
 		open: function() {
 			var oView = this._oView;
 			var oControl = this._oControl;
@@ -63,25 +67,18 @@ sap.ui.define([
 			return {};
 
 		},
-		_onButtonPress: function(){
-			this.close();
-		},
+		
 		_onDeleteMember: function() {
 			var projectId = this.getView().byId("projectId").getText();
-
-			//var functionMember = this.getView().byId('memberFunction').getValue();
-			/*//check if all required fields are submitted
-			if (projectId === "" || userId === "" || functionMember === ""){
-				sap.m.MessageToast.show('All fields are required');
-			} else {
+			var userId = $.sap.userId;
 				var oModel = this.getView().getModel(); 
 				//create your json object (based on the odata/cds!!)
 				var oData = {
 						UserId : parseInt(userId,10),
 						Name : null,
 						ProjectId : parseInt(projectId,10),
-						Role : functionMember,
-						Deleted : 0
+						Role : null,
+						Deleted : 1
 				};
 					//(only for update/insert //get csfr token)
 					jQuery.ajax("/",{
@@ -91,32 +88,26 @@ sap.ui.define([
 						  beforeSend: function(xhr){
 						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
 						  },
-						  complete : function(response) {
-						    jQuery.ajaxSetup({
+						  success : function(response) {
+						  	jQuery.ajaxSetup({
 						      beforeSend: function(xhr) {
 						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
 						      }
 						    });
 						  }
 						});
-					//oModel.update("</yourset>", oData<created_entity)
-					oModel.create("/TeamMemberSet", oData, {
+					oModel.update("/TeamMemberSet(UserId="+userId+",ProjectId="+projectId+")", oData, {
 					  merge: true, //updates changed fields
-					  success: function() { },
-					  error: function(oError) { success == false;console.log(oError); }
+					  success: function() {  },
+					  error: function(oError) {  }
 					});
-			}*/
 					
-			this.close();
 		},
 		onInit: function() {
-
 			this._oDialog = this.getControl();
-
 		},
 		onExit: function() {
 			this._oDialog.destroy();
-
 		}
 
 	});

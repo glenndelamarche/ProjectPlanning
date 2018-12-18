@@ -50,7 +50,49 @@ sap.ui.define([
 				oControl.openBy.apply(oControl, args);
 			}
 		},
-
+		_onArchiveProject: function(){
+			var projectId = $.sap.projectId;
+			var oModel = this.getView().getModel(); 
+				//create your json object (based on the odata/cds!!)
+				var oData = {
+						ProjectId : parseInt(projectId,10),
+						Name : "_update_",
+						Description: null,
+						Company : null,
+						Budget: null,
+						StartDate: null,
+						EndDate: null,
+						DeliverablesUrl: null,
+						ManagerId: null,
+						Active: null,
+						Deleted : 1
+				};
+					//(only for update/insert //get csfr token)
+					jQuery.ajax("/",{
+						  type: "GET",
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  beforeSend: function(xhr){
+						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
+						  },
+						  success : function(response) {
+						  	jQuery.ajaxSetup({
+						      beforeSend: function(xhr) {
+						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
+						      }
+						    });
+						  }
+						});
+					oModel.update("/ProjectSet("+projectId+")", oData, {
+					  merge: true, //updates changed fields
+					  success: function() {  },
+					  error: function(oError) {  }
+					});
+					sap.m.MessageToast.show('Project #'+projectId+' archived');
+		},
+		setProjectId: function(projectId){
+			$.sap.projectId = projectId;
+		},
 		close: function() {
 			this._oControl.close();
 		},
