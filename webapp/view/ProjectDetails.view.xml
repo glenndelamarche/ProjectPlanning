@@ -8,6 +8,7 @@
                 <markers/>
             </ObjectHeader>
             <Text id="projectId" text="{ProjectId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
+            <Text id="company" text="{Company}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
             <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
             <IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
                 <items>
@@ -183,7 +184,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                                            <ComboBox id="comboboxManager" editable="true" items="{path : '/UserSet'}"  enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+                                            <ComboBox id="comboboxManagerU" editable="true" items="{path : '/UserSet'}"  enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
                                                 <items>
                                                     <core:Item text="{Name}" enabled="true" key="{UserId}"/>
                                                 </items>
@@ -193,7 +194,10 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Budget" text="" titleActive="false" visible="true"/>
-                                            <TextArea id="budgetU" value="{Budget}" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" />
+                                            <FlexBox>
+				                             <TextArea id="budgetU" value="{Budget}" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" />
+				                            <Text text="EUR" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+				                        	</FlexBox>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -218,7 +222,7 @@
                                         <cells>
                                         	<ObjectIdentifier title="" text="" titleActive="false" visible="false"/>
                                         	<FlexBox>
-                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiMediumMarginEnd"/>
+                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiMediumMarginEnd" press="_onUpdateProject"/>
                                             <Button text="ARCHIVE PROJECT" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="archiveProject" cd:projectId="{ProjectId}"/>
                                         </FlexBox>
                                         </cells>

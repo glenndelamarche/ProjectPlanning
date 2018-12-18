@@ -101,7 +101,6 @@ sap.ui.define([
 					  success: function() {  },
 					  error: function(oError) {  }
 					});
-					
 		},
 		onInit: function() {
 			this._oDialog = this.getControl();
