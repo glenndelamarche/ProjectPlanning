@@ -1,6 +1,3 @@
-/*eslint-disable no-console, no-alert*/
-/*global history*/
-
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover9", "./Popover10",

@@ -2,15 +2,15 @@
     <ResponsivePopover contentHeight="100px" contentWidth="250px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="Add Team Member" verticalScrolling="true" visible="true">
         <content>
             <Title text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
-    			<FlexBox alignItems="Center" justifyContent="Center">
-            <ComboBox id="comboboxUsers" items="{path : '/UserSet'}" placeholder="Search" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
-                <items >
-                    <core:Item text="{Name}" enabled="true" key="{UserId}"/>
-                </items>
-            </ComboBox>
+    		<FlexBox alignItems="Center" justifyContent="Center">
+	            <ComboBox id="comboboxUsers" items="{path : '/UserSet'}" placeholder="Search" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+	                <items >
+	                    <core:Item text="{Name}" enabled="true" key="{UserId}"/>
+	                </items>
+	            </ComboBox>
             </FlexBox>
              <FlexBox alignItems="Center" justifyContent="Center">
-            <TextArea id="memberFunction" rows="1" placeholder="Function" cols="24" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+            <TextArea id="memberFunction" rows="1" placeholder="Function" cols="24" maxLength="0" wrapping="None" enabled="true" visible="true" />
              </FlexBox>
         </content>
         <beginButton>
@@ -18,7 +18,7 @@
         </beginButton>
         <customHeader/>
         <endButton>
-            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="close"/>
         </endButton>
         <subHeader/>
     </ResponsivePopover>
