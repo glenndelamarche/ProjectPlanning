@@ -44,8 +44,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 			oBinding.filter(aFilters, FilterType.Application);  //apply the filter
 		
+		
+		
+		
+			//UserEval
 
+		
 			
+			var oSelect, oBinding, aFilters;
+			var sFilterValue = oArgument; // I assume you can get the filter value from somewhere...
+			oSelect = this.getView().byId("evaluations"); //get the reference to your Select control
+			oBinding = oSelect.getBinding("items");
+			aFilters = [];
+			
+			if (sFilterValue){
+			    aFilters.push( new sap.ui.model.Filter("UserId", sap.ui.model.FilterOperator.EQ, oArgument) );
+			}
+			oBinding.filter(aFilters, FilterType.Application);  //apply the filter
+					
 		
 
 		},

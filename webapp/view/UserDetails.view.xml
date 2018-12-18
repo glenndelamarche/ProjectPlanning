@@ -156,12 +156,12 @@
                                         </header>
                                         <footer/>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                   <!-- <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
                                             <Text text="Manager" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
-                                    </Column>
+                                    </Column> -->
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
                                             <Text text="Begin date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
@@ -181,9 +181,9 @@
                                             <ObjectIdentifier title="{Name}" text="ID: {ProjectId}" titleActive="false" visible="true"/>
                                             <Text text="{Company}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <Text text="{Role}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{ManagerId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{StartDate}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{EndDate}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                           <!-- <Text text="{ManagerId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/> -->
+                                            <Text text="{StartDate}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{EndDate}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -276,7 +276,7 @@
                                     <data:Measure name="mea0" label="Score" role="axis2"/>
                                 </chart:measures>
                             </chart:Chart>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="evaluations" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/UserEvalSet' }">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -306,18 +306,18 @@
                                         </header>
                                         <footer/>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                   <!-- <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
                                             <Text text="Manager" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
-                                    </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    </Column>-->
+                                   <!-- <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
                                             <Text text="Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
-                                    </Column>
+                                    </Column>-->
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
                                             <Text text="View evaluation" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
@@ -328,10 +328,10 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <ObjectIdentifier title="Project1" text="ID: PRO001" titleActive="false" visible="true"/>
-                                            <Text text="Developer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="03/01/2018" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <ObjectIdentifier title="{ProjName}" text="ID: {ProjectId}" titleActive="false" visible="true"/>
+                                            <Text text="{Role}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <!--<Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+                                           <!-- <Text text="03/01/2018" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
                                             <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
                                             <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
