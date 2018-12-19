@@ -105,7 +105,7 @@ sap.ui.define([
 		},
 		
 		onInit: function() {
-			var dropdown = new sap.ui.commons.DropdownBox('comboboxUsers');
+			var dropdown = new sap.m.ComboBox('comboboxUsers');
 			
 			  var itemTemplate = new sap.ui.core.ListItem({
 			  text : "{Name}",

@@ -219,39 +219,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oView.setModel(oModel, "staticDataModel");
 			self.oBindingParameters = {};
 
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231"] = {};
+			oData["highestAvg"] = {};
 
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231"]["data"] = [{
-				"dim0": "Tom",
-				"mea0": "80",
-				"__id": 0
-			}, {
-				"dim0": "Wout",
-				"mea0": "85",
-				"__id": 1
-			}, {
-				"dim0": "Glenn",
-				"mea0": "75",
-				"__id": 2
-			}, {
-				"dim0": "Christophe",
-				"mea0": "90",
-				"__id": 3
-			}, {
-				"dim0": "Steve",
-				"mea0": "90",
-				"__id": 4
-			}];
+			oData["highestAvg"]["data"] = 
 
-			self.oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231'] = {
-				"path": "/sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231/data",
-				"model": "staticDataModel",
-				"parameters": {}
+			self.oBindingParameters['highestAvg'] = {
+				"path": "/EvalAvgSet?$top=5",
 			};
 
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493"] = {};
+			oData["lowestAvg"] = {};
 
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493"]["data"] = [{
+			oData["lowestAvg"]["data"] = [{
 				"dim0": "Andrea",
 				"mea0": "10",
 				"__id": 0
@@ -273,8 +251,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				"__id": 4
 			}];
 
-			self.oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493'] = {
-				"path": "/sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493/data",
+			self.oBindingParameters['lowestAvg'] = {
+				"path": "/lowestAvg/data",
 				"model": "staticDataModel",
 				"parameters": {}
 			};
@@ -292,12 +270,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				return oValueToFormat;
 			}
 
-			var aDimensions = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231").getDimensions();
+			var aDimensions = oView.byId("highestAvg").getDimensions();
 			aDimensions.forEach(function(oDimension) {
 				oDimension.setTextFormatter(dateDimensionFormatter);
 			});
 
-			var aDimensions = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493").getDimensions();
+			var aDimensions = oView.byId("lowestAvg").getDimensions();
 			aDimensions.forEach(function(oDimension) {
 				oDimension.setTextFormatter(dateDimensionFormatter);
 			});
@@ -310,11 +288,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				oBindingParameters = this.oBindingParameters,
 				oView = this.getView();
 
-			oChart = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231");
-			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231']);
+			oChart = oView.byId("highestAvg");
+			oChart.bindData(oBindingParameters['highestAvg']);
 
-			oChart = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493");
-			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493']);
+			oChart = oView.byId("lowestAvg");
+			oChart.bindData(oBindingParameters['lowestAvg']);
 
 		}
 	});

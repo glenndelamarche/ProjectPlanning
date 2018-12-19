@@ -10,22 +10,20 @@
             	<Text text="Download all evalutations" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" class="sapUiSmallMarginEnd"/>
             	<OverflowToolbarButton text="Download all Evaluations" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiSmallMarginEnd" press="OnExcelAssets"/>
             </FlexBox>
-            <chart:Chart id="sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
-                <chart:FlattenedDataset data="{/EvalAvgSet?$top=5}">
+            <chart:Chart id="highestAvg" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
 	                <chart:dimensions>
 	                    <data:Dimension name="__id" label="Users" role="category" textProperty="dim0" value="{Name}"/>
 	                </chart:dimensions>
 	                <chart:measures>
 	                    <data:Measure name="mea0" label="AVG Score" role="axis2" value="{TotScore}"/>
 	                </chart:measures>
-	             </viz.data:FlattenedDataset>
             </chart:Chart>
             <ObjectHeader intro="" title="Lowest AVG Score" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
             </ObjectHeader>
-            <chart:Chart id="sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
+            <chart:Chart id="lowestAvg" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
                 <chart:dimensions>
                     <data:Dimension name="__id" label="Users" role="category" textProperty="dim0"/>
                 </chart:dimensions>
