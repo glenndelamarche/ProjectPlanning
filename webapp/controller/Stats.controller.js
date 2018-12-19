@@ -1,8 +1,10 @@
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./utilities",
-	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, History) {
+	"sap/ui/core/routing/History",
+	"sap/ui/core/util/Export", 
+	"sap/ui/core/util/ExportTypeCSV"
+], function(BaseController, MessageBox, Utilities, History,Export,ExportTypeCSV) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Stats", {
@@ -60,6 +62,98 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 
 		},
+		OnExcelAssets: function(oEvt){
+            var oModel = this.getView().getModel();
+           
+            var oExport = new Export({
+                exportType : new ExportTypeCSV({
+                    separatorChar : ";"
+                }),
+                models : oModel,
+                rows : {
+                    path : "/UserEvalSet",
+                },
+                columns: [{
+					name: "Evals Id",
+					template: {
+						content: "{EvalsId}"
+					}
+				}, {
+					name: "User Id",
+					template: {
+						content: "{UserId}"
+					}
+				}, {
+					name: "Name",
+					template: {
+						content: "{Name}"
+					}
+				}, {
+					name: "Email",
+					template: {
+						content: "{Email}"
+					}
+				}, {
+					name: "Role",
+					template: {
+						content: "{Role}"
+					}	
+				}, {
+					name: "ProjName",
+					template: {
+						content: "{ProjName}"
+					}
+				}, {
+					name: "Communication",
+					template: {
+						content: "{Communication}"
+					}
+				}, {
+					name: "Motivation",
+					template: {
+						content: "{Motivation}"
+					}
+				}, {
+					name: "Quality",
+					template: {
+						content: "{Quality}"
+					}
+				}, {
+					name: "Quantity",
+					template: {
+						content: "{Quantity}"
+					}
+				}, {
+					name: "Teamplayer",
+					template: {
+						content: "{Teamplayer}"
+					}
+				}, {
+					name: "StartDate",
+					template: {
+						content: "{StartDate}"
+					}
+				}, {
+					name: "EndDate",
+					template: {
+						content: "{EndDate}"
+					}
+				}, {
+					name: "DeliverablesUrl",
+					template: {
+						content: "{DeliverablesUrl}"
+					}	
+				}]
+            });
+            this.onExcel(oExport);
+        },
+		
+		onExcel: sap.m.Table.prototype.exportData || function(oExport){
+            oExport.saveFile().catch(function(oError) {
+            }).then(function() {
+                oExport.destroy();
+            });
+        },
 		updateBindingOptions: function(sCollectionId, oBindingData, sSourceId) {
 			this.mBindingOptions = this.mBindingOptions || {};
 			this.mBindingOptions[sCollectionId] = this.mBindingOptions[sCollectionId] || {};

@@ -243,61 +243,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 
 		},
-		onDataExport: sap.m.Table.prototype.exportData || function() {
-
-			var oModel = this.getView().byId("teamMembers").getModel();
-			var oSelect, oBinding, aFilters;
-			var sFilterValue = $.sap.projectId; // I assume you can get the filter value from somewhere...
-			oSelect = this.getView().byId("teamMembers"); //get the reference to your Select control
-			oBinding = oSelect.getBinding("items");
-			aFilters = [];
-			
-			if (sFilterValue){
-			    aFilters.push( new sap.ui.model.Filter("ProjectId", sap.ui.model.FilterOperator.EQ, sFilterValue) );
-			}
-			var oExport = new Export({
-
-				exportType: new ExportTypeCSV({
-					fileExtension: "csv",
-					separatorChar: ";"
-				}),
-
-				models: oModel,
-
-				rows: {
-					path: "/TeamMemberSet",
-					filters: oBinding.filter(aFilters, FilterType.Application)
-
-				},
-				columns: [{
-					name: "User Id",
-					template: {
-						content: "{UserId}"
-					}
-				}, {
-					name: "Name",
-					template: {
-						content: "{Name}"
-					}
-				}, {
-					name: "ProjectId",
-					template: {
-						content: "{ProjectId}"
-					}
-				}, {
-					name: "Role",
-					template: {
-						content: "{Role}"
-					}
-				}]
-			});
-			console.log(oExport);
-			oExport.saveFile().catch(function(oError) {
-
-			}).then(function() {
-				oExport.destroy();
-			});
-		},
+	
 		OnExcelAssets: function(oEvt){
             var oModel = this.getView().byId("teamMembers").getModel();
             var oTab = this.getView().byId("teamMembers");
