@@ -100,8 +100,8 @@ sap.ui.define([
 			var name = this.getView().byId("txtName").getValue();
 			var company = this.getView().byId('txtCompany').getValue();
 			var budget = this.getView().byId('txtBudget').getValue();
-			var startDate = this.getView().byId('txtStartDate').getValue();
-			var endDate = this.getView().byId('txtEndDate').getValue();
+			var startDate = this.getView().byId('datStartDate').getValue();
+			var endDate = this.getView().byId('datEndDate').getValue();
 			var desc = this.getView().byId('txtDesc').getValue();
 			var trello = this.getView().byId('txtTrello').getValue();
 			var manager = this.getView().byId('ddlManager').getSelectedKey();
@@ -118,7 +118,8 @@ sap.ui.define([
 					Name: name,
 					Description: desc,
 					Company: company,
-					Budget: parseFloat(budget),//.toFixed(2),
+					//Budget: parseFloat(budget).toFixed(2),
+					Budget: parseFloat(budget).toFixed(2),
 					StartDate: this.getODataDateFromDatePicker(startDate),
 					EndDate: (endDate !== "" ? this.getODataDateFromDatePicker(endDate) : null),
 					DeliverablesUrl: (trello !== "" ? trello : null),
@@ -154,7 +155,7 @@ sap.ui.define([
 		},
 
 		_onButtonPress: function () {
-			this.onClose();
+			this.close();
 
 		},
 		onInit: function () {
