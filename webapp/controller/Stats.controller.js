@@ -1,3 +1,5 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./utilities",
@@ -42,6 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			
 
 		},
 		applyFiltersAndSorters: function(sControlId, sAggregationName, chartBindingInfo) {
@@ -211,88 +214,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}
 				}.bind(this)
 			});
-
-			var oView = this.getView(),
-				oData = {},
-				self = this;
-			var oModel = new sap.ui.model.json.JSONModel();
-			oView.setModel(oModel, "staticDataModel");
-			self.oBindingParameters = {};
-
-			oData["highestAvg"] = {};
-
-			oData["highestAvg"]["data"] = 
-
-			self.oBindingParameters['highestAvg'] = {
-				"path": "/EvalAvgSet?$top=5",
-			};
-
-			oData["lowestAvg"] = {};
-
-			oData["lowestAvg"]["data"] = [{
-				"dim0": "Andrea",
-				"mea0": "10",
-				"__id": 0
-			}, {
-				"dim0": "André",
-				"mea0": "40",
-				"__id": 1
-			}, {
-				"dim0": "Jozef",
-				"mea0": "20",
-				"__id": 2
-			}, {
-				"dim0": "Josefien",
-				"mea0": "30",
-				"__id": 3
-			}, {
-				"dim0": "Gilbert",
-				"mea0": "15",
-				"__id": 4
-			}];
-
-			self.oBindingParameters['lowestAvg'] = {
-				"path": "/lowestAvg/data",
-				"model": "staticDataModel",
-				"parameters": {}
-			};
-
-			oView.getModel("staticDataModel").setData(oData, true);
-
-			function dateDimensionFormatter(oDimensionValue, sTextValue) {
-				var oValueToFormat = sTextValue !== undefined ? sTextValue : oDimensionValue;
-				if (oValueToFormat instanceof Date) {
-					var oFormat = sap.ui.core.format.DateFormat.getDateInstance({
-						style: "short"
-					});
-					return oFormat.format(oValueToFormat);
-				}
-				return oValueToFormat;
-			}
-
-			var aDimensions = oView.byId("highestAvg").getDimensions();
-			aDimensions.forEach(function(oDimension) {
-				oDimension.setTextFormatter(dateDimensionFormatter);
-			});
-
-			var aDimensions = oView.byId("lowestAvg").getDimensions();
-			aDimensions.forEach(function(oDimension) {
-				oDimension.setTextFormatter(dateDimensionFormatter);
-			});
-
-		},
-		onAfterRendering: function() {
-
-			var oChart,
-				self = this,
-				oBindingParameters = this.oBindingParameters,
-				oView = this.getView();
-
-			oChart = oView.byId("highestAvg");
-			oChart.bindData(oBindingParameters['highestAvg']);
-
-			oChart = oView.byId("lowestAvg");
-			oChart.bindData(oBindingParameters['lowestAvg']);
 
 		}
 	});

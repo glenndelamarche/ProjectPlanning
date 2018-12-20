@@ -203,7 +203,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Start-date" text="" titleActive="false" visible="true"/>
-                                            <DatePicker id="startDateU" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                                            <DatePicker id="startDateU" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd" />
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
