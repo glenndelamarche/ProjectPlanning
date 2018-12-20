@@ -159,7 +159,10 @@ sap.ui.define([
 				//oModel.update("</yourset>", oData<created_entity)
 				oModel.create("/UserSet", oData, {
 					merge: true, //updates changed fields
-					success: function () {},
+					success: function () {
+							sap.m.MessageToast.show('User '+firstName+" "+lastName+" created");
+
+					},
 					error: function (oError) {
 						console.log(oError);
 					}
