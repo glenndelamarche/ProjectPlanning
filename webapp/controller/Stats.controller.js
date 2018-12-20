@@ -1,8 +1,12 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./utilities",
-	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, History) {
+	"sap/ui/core/routing/History",
+	"sap/ui/core/util/Export", 
+	"sap/ui/core/util/ExportTypeCSV"
+], function(BaseController, MessageBox, Utilities, History,Export,ExportTypeCSV) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Stats", {
@@ -40,6 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			
 
 		},
 		applyFiltersAndSorters: function(sControlId, sAggregationName, chartBindingInfo) {
@@ -60,6 +65,98 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 
 		},
+		OnExcelAssets: function(oEvt){
+            var oModel = this.getView().getModel();
+           
+            var oExport = new Export({
+                exportType : new ExportTypeCSV({
+                    separatorChar : ";"
+                }),
+                models : oModel,
+                rows : {
+                    path : "/UserEvalSet",
+                },
+                columns: [{
+					name: "Evals Id",
+					template: {
+						content: "{EvalsId}"
+					}
+				}, {
+					name: "User Id",
+					template: {
+						content: "{UserId}"
+					}
+				}, {
+					name: "Name",
+					template: {
+						content: "{Name}"
+					}
+				}, {
+					name: "Email",
+					template: {
+						content: "{Email}"
+					}
+				}, {
+					name: "Role",
+					template: {
+						content: "{Role}"
+					}	
+				}, {
+					name: "ProjName",
+					template: {
+						content: "{ProjName}"
+					}
+				}, {
+					name: "Communication",
+					template: {
+						content: "{Communication}"
+					}
+				}, {
+					name: "Motivation",
+					template: {
+						content: "{Motivation}"
+					}
+				}, {
+					name: "Quality",
+					template: {
+						content: "{Quality}"
+					}
+				}, {
+					name: "Quantity",
+					template: {
+						content: "{Quantity}"
+					}
+				}, {
+					name: "Teamplayer",
+					template: {
+						content: "{Teamplayer}"
+					}
+				}, {
+					name: "StartDate",
+					template: {
+						content: "{StartDate}"
+					}
+				}, {
+					name: "EndDate",
+					template: {
+						content: "{EndDate}"
+					}
+				}, {
+					name: "DeliverablesUrl",
+					template: {
+						content: "{DeliverablesUrl}"
+					}	
+				}]
+            });
+            this.onExcel(oExport);
+        },
+		
+		onExcel: sap.m.Table.prototype.exportData || function(oExport){
+            oExport.saveFile().catch(function(oError) {
+            }).then(function() {
+                oExport.destroy();
+            });
+        },
 		updateBindingOptions: function(sCollectionId, oBindingData, sSourceId) {
 			this.mBindingOptions = this.mBindingOptions || {};
 			this.mBindingOptions[sCollectionId] = this.mBindingOptions[sCollectionId] || {};
@@ -117,110 +214,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}
 				}.bind(this)
 			});
-
-			var oView = this.getView(),
-				oData = {},
-				self = this;
-			var oModel = new sap.ui.model.json.JSONModel();
-			oView.setModel(oModel, "staticDataModel");
-			self.oBindingParameters = {};
-
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231"] = {};
-
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231"]["data"] = [{
-				"dim0": "Tom",
-				"mea0": "80",
-				"__id": 0
-			}, {
-				"dim0": "Wout",
-				"mea0": "85",
-				"__id": 1
-			}, {
-				"dim0": "Glenn",
-				"mea0": "75",
-				"__id": 2
-			}, {
-				"dim0": "Christophe",
-				"mea0": "90",
-				"__id": 3
-			}, {
-				"dim0": "Steve",
-				"mea0": "90",
-				"__id": 4
-			}];
-
-			self.oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231'] = {
-				"path": "/sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231/data",
-				"model": "staticDataModel",
-				"parameters": {}
-			};
-
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493"] = {};
-
-			oData["sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493"]["data"] = [{
-				"dim0": "Andrea",
-				"mea0": "10",
-				"__id": 0
-			}, {
-				"dim0": "André",
-				"mea0": "40",
-				"__id": 1
-			}, {
-				"dim0": "Jozef",
-				"mea0": "20",
-				"__id": 2
-			}, {
-				"dim0": "Josefien",
-				"mea0": "30",
-				"__id": 3
-			}, {
-				"dim0": "Gilbert",
-				"mea0": "15",
-				"__id": 4
-			}];
-
-			self.oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493'] = {
-				"path": "/sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493/data",
-				"model": "staticDataModel",
-				"parameters": {}
-			};
-
-			oView.getModel("staticDataModel").setData(oData, true);
-
-			function dateDimensionFormatter(oDimensionValue, sTextValue) {
-				var oValueToFormat = sTextValue !== undefined ? sTextValue : oDimensionValue;
-				if (oValueToFormat instanceof Date) {
-					var oFormat = sap.ui.core.format.DateFormat.getDateInstance({
-						style: "short"
-					});
-					return oFormat.format(oValueToFormat);
-				}
-				return oValueToFormat;
-			}
-
-			var aDimensions = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231").getDimensions();
-			aDimensions.forEach(function(oDimension) {
-				oDimension.setTextFormatter(dateDimensionFormatter);
-			});
-
-			var aDimensions = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493").getDimensions();
-			aDimensions.forEach(function(oDimension) {
-				oDimension.setTextFormatter(dateDimensionFormatter);
-			});
-
-		},
-		onAfterRendering: function() {
-
-			var oChart,
-				self = this,
-				oBindingParameters = this.oBindingParameters,
-				oView = this.getView();
-
-			oChart = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231");
-			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231']);
-
-			oChart = oView.byId("sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493");
-			oChart.bindData(oBindingParameters['sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493']);
 
 		}
 	});

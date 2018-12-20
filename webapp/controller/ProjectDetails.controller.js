@@ -35,10 +35,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				oView.getModel().read("/UserSet("+managerId+")", {
 				  success: function(oRetrievedResult) { 
 				  	var jModel = new sap.ui.model.json.JSONModel(oRetrievedResult);
-					sap.ui.getCore().setModel(jModel);
 				  	oText.setText(jModel.getProperty("/Name"));
 				  },
-				  error: function(oError) { oText.setText(""); }
+				  error: function(oError) { oText.setText(managerId); }
 				});
 			}
 			//check deliverables_url
@@ -62,12 +61,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 			oBinding.filter(aFilters, FilterType.Application);  //apply the filter
 			
+			//fill update fields
+			this.getValuesForUpdate();
+			
+		},
+		getValuesForUpdate: function(oEvent){
 			//update
-			oView.byId('comboboxManager').setSelectedKey(managerId);
+			var oView = this.getView();
+			oView.byId('comboboxManagerU').setSelectedKey(oView.byId("managerId").getText());
 			var date = new Date(oView.byId('startDate').getText());
 			this.getView().byId('startDateU').setDateValue(date);
 			date = new Date(oView.byId('endDate').getText());
-			this.getView().byId('endDateU').setDateValue(date);
+			this.getView().byId('endDateU').setDateValue(date);	
 		},
 		_onOverflowToolbarButtonPress: function(oEvent) {
 
@@ -89,6 +94,82 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			oPopover.open(oSource);
 
+		},
+		getODataDateFromDatePicker: function (datePickerInstance) {
+			var yyyymmdd = datePickerInstance;
+			var splitDateArray = yyyymmdd.match(/(\d{4})(\d{2})(\d{2})/);
+			var yyyySlashMMSlashDD = splitDateArray[1] + '/' + splitDateArray[2] + '/' + splitDateArray[3];
+			var jsDateObject = new Date(yyyySlashMMSlashDD);
+			return jsDateObject;
+
+		},
+		_onUpdateProject: function(oEvent){
+			var projectId = this.getView().byId("projectId").getText();
+			var name = this.getView().byId("projectNameU").getValue();
+			var company = this.getView().byId('company').getText();
+			var budget = this.getView().byId('budgetU').getValue();
+			var startDate = this.getView().byId('startDateU').getValue();
+			var endDate = this.getView().byId('endDateU').getValue();
+			var desc = this.getView().byId('descriptionU').getValue();
+			var trello = this.getView().byId('deliverablesU').getValue();
+			var manager = this.getView().byId('comboboxManagerU').getSelectedKey();
+			//check if all required fields are submitted
+			if (name === "" || budget === "" || startDate === "" ||
+				desc === "" || manager === "") {
+					this.getView().byId("projectNameU").setValueState(sap.ui.core.ValueState.Error);
+					this.getView().byId('budgetU').setValueState(sap.ui.core.ValueState.Error);
+					this.getView().byId('startDateU').setValueState(sap.ui.core.ValueState.Error);
+					this.getView().byId('descriptionU').setValueState(sap.ui.core.ValueState.Error);
+					this.getView().byId('comboboxManagerU').setValueState(sap.ui.core.ValueState.Error);
+					sap.m.MessageToast.show('Please fill in all the required fields');
+					this.getValuesForUpdate();
+
+
+			} else {
+					this.getView().byId("projectNameU").setValueState(sap.ui.core.ValueState.None);
+					this.getView().byId('budgetU').setValueState(sap.ui.core.ValueState.None);
+					this.getView().byId('startDateU').setValueState(sap.ui.core.ValueState.None);
+					this.getView().byId('descriptionU').setValueState(sap.ui.core.ValueState.None);
+					this.getView().byId('comboboxManagerU').setValueState(sap.ui.core.ValueState.None);
+				var oModel = this.getView().getModel();
+				//create your json object (based on the odata/cds!!)
+				var oData = {
+					ProjectId : parseInt(projectId, 10),
+					Name: name,
+					Description: desc,
+					Company: company,
+					Budget: parseFloat(budget).toFixed(2),
+					StartDate: this.getODataDateFromDatePicker(startDate),
+					EndDate: (endDate !== "" ? this.getODataDateFromDatePicker(endDate) : null),
+					DeliverablesUrl: (trello !== "" ? trello : null),
+					ManagerId: parseInt(manager, 10),
+					Active: 1,
+					Deleted: 0
+				};
+					//(only for update/insert //get csfr token)
+					jQuery.ajax("/",{
+						  type: "GET",
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  beforeSend: function(xhr){
+						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
+						  },
+						  success : function(response) {
+						  	jQuery.ajaxSetup({
+						      beforeSend: function(xhr) {
+						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
+						      }
+						    });
+						  }
+						});
+					oModel.update("/ProjectSet("+projectId+")", oData, {
+					  merge: true, //updates changed fields
+					  success: function() { 
+					  	sap.m.MessageToast.show('Your updates were successfully processed');
+					  },
+					  error: function(oError) {  }
+					});
+			}
 		},
 		_onIconPress: function(oEvent) {
 			var userId = oEvent.getSource().getCustomData()[0].getProperty('value');
@@ -162,61 +243,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 
 		},
-		onDataExport: sap.m.Table.prototype.exportData || function() {
-
-			var oModel = this.getView().byId("teamMembers").getModel();
-			var oSelect, oBinding, aFilters;
-			var sFilterValue = $.sap.projectId; // I assume you can get the filter value from somewhere...
-			oSelect = this.getView().byId("teamMembers"); //get the reference to your Select control
-			oBinding = oSelect.getBinding("items");
-			aFilters = [];
-			
-			if (sFilterValue){
-			    aFilters.push( new sap.ui.model.Filter("ProjectId", sap.ui.model.FilterOperator.EQ, sFilterValue) );
-			}
-			var oExport = new Export({
-
-				exportType: new ExportTypeCSV({
-					fileExtension: "csv",
-					separatorChar: ";"
-				}),
-
-				models: oModel,
-
-				rows: {
-					path: "/TeamMemberSet",
-					filters: oBinding.filter(aFilters, FilterType.Application)
-
-				},
-				columns: [{
-					name: "User Id",
-					template: {
-						content: "{UserId}"
-					}
-				}, {
-					name: "Name",
-					template: {
-						content: "{Name}"
-					}
-				}, {
-					name: "ProjectId",
-					template: {
-						content: "{ProjectId}"
-					}
-				}, {
-					name: "Role",
-					template: {
-						content: "{Role}"
-					}
-				}]
-			});
-			console.log(oExport);
-			oExport.saveFile().catch(function(oError) {
-
-			}).then(function() {
-				oExport.destroy();
-			});
-		},
+	
 		OnExcelAssets: function(oEvt){
             var oModel = this.getView().byId("teamMembers").getModel();
             var oTab = this.getView().byId("teamMembers");
@@ -279,7 +306,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}.bind(this)
 			});
 
-			var dropdown = new sap.m.ComboBox('comboboxManager');
+			var dropdown = new sap.m.ComboBox('comboboxManagers');
 
 			
 			  var itemTemplate = new sap.ui.core.ListItem({

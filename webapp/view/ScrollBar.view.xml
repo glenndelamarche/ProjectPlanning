@@ -1,7 +1,7 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.sap.build.standard.untitledPrototype.controller.ScrollBar">
     <Page title="" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <IconTabBar expandable="true" expanded="true" applyContentPadding="true" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok" class="sapUiNoContentPadding">
+            <IconTabBar select="onSelectChanged" expandable="true" expanded="true" applyContentPadding="true" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok" class="sapUiNoContentPadding">
                 <items>
                     <IconTabFilter icon="sap-icon://group-2" iconColor="Default" text="Project" count="" design="Vertical" showAll="false" textDirection="LTR" enabled="true" visible="true" tooltip="" iconDensityAware="false">
                         <content>
@@ -55,12 +55,8 @@
                             </List>
                         </content>
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://bar-chart" iconColor="Default" text="Stats" count="" design="Vertical" showAll="false" textDirection="RTL" enabled="true" visible="true" iconDensityAware="false">
-                        <content>
-                        	<FlexBox alignItems="Center" justifyContent="Center">
-                            	<Button text="View statistic details" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
-                        	</FlexBox>
-                        </content>
+                    <IconTabFilter key="3" icon="sap-icon://bar-chart" iconColor="Default" text="Stats" count="" design="Vertical" showAll="false" textDirection="RTL" enabled="true" visible="true" iconDensityAware="false" >
+                        
                     </IconTabFilter>
                 </items>
                 <content/>
