@@ -53,6 +53,7 @@ sap.ui.define([
 
 		close: function() {
 			this._oControl.close();
+		
 		},
 
 		setRouter: function(oRouter) {
@@ -63,19 +64,60 @@ sap.ui.define([
 			return {};
 
 		},
-		_onButtonPress: function() {
-
-			this.close();
-
+		
+		_onAddMember: function(){
+			//get all inserted/needed fields BY ID (you can access fields from detail page)
+			var projectId = this.getView().byId("projectId").getText();
+			var userId = this.getView().byId('comboboxUsers').getSelectedKey();
+			var functionMember = this.getView().byId('memberFunction').getValue();
+			//check if all required fields are submitted
+			if (projectId === "" || userId === "" || functionMember === ""){
+				sap.m.MessageToast.show('All fields are required');
+			} else {
+				var oModel = this.getView().getModel(); 
+				//create your json object (based on the odata/cds!!)
+				var oData = {
+						UserId : parseInt(userId,10),
+						Name : null,
+						ProjectId : parseInt(projectId,10),
+						Role : functionMember,
+						Deleted : 0
+				};
+					//(only for update/insert //get csfr token)
+					jQuery.ajax("/",{
+						  type: "GET",
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  beforeSend: function(xhr){
+						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
+						  },
+						  done : function(response) {
+						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
+						    }});
+					//oModel.update("</yourset>", oData<created_entity)
+					oModel.create("/TeamMemberSet", oData, {
+					  merge: true, //updates changed fields
+					  success: function() { },
+					  error: function(oError) { }
+					});
+					
+					}
 		},
+		
 		onInit: function() {
-
+			var dropdown = new sap.m.ComboBox('comboboxUsers');
+			
+			  var itemTemplate = new sap.ui.core.ListItem({
+			  text : "{Name}",
+			  key :"{UserId}"
+			  });
+			
+			dropdown.bindItems("/UserSet",itemTemplate);
 			this._oDialog = this.getControl();
 
 		},
 		onExit: function() {
 			this._oDialog.destroy();
-
 		}
 
 	});

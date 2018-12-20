@@ -51,12 +51,26 @@
 					sap:filterable="false"/><Property Name="ManagerId" Type="Edm.Int32" sap:label="Number" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name" Type="Edm.String" MaxLength="60" sap:label="BCV Obj. Name" sap:creatable="false" sap:sortable="false"
 					sap:filterable="false"/><Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:sortable="false"
 					sap:filterable="false"/></EntityType>
+
 			<EntityContainer Name="YXM138_FLEXSO_SRV_02_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ProjectSet" EntityType="YXM138_FLEXSO_SRV_02.Project" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="UserSet" EntityType="YXM138_FLEXSO_SRV_02.User" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="TeamMemberSet" EntityType="YXM138_FLEXSO_SRV_02.TeamMember" sap:deletable="false" sap:searchable="true"
 				sap:content-version="1"/><EntitySet Name="UserProjectSet" EntityType="YXM138_FLEXSO_SRV_02.UserProject" sap:deletable="false" sap:searchable="true"
 				sap:content-version="1"/></EntityContainer><atom:link rel="self"
 				href="https://webidecp-p1943034568trial.dispatcher.hanatrial.ondemand.com/destinations/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata"
 				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
 				href="https://webidecp-p1943034568trial.dispatcher.hanatrial.ondemand.com/destinations/SAPGateway/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata"
+
+<!--			<EntityType Name="Eval" sap:content-version="1">
+				<Key><PropertyRef Name="EvalsId"/><PropertyRef Name="ProjectId"/><PropertyRef Name="UserId"/></Key><Property Name="EvalsId" Type="Edm.Int32" Nullable="false" sap:label="Number" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ProjectId" Type="Edm.Int32" Nullable="false" sap:label="Number" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserId" Type="Edm.Int32" Nullable="false" sap:label="Number" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Description" Type="Edm.String" MaxLength="255" sap:label="Description" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Communication" Type="Edm.Byte" sap:label="Overall Score" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Quality" Type="Edm.Byte" sap:label="Overall Score" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Quantity" Type="Edm.Byte" sap:label="Overall Score" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Motivation" Type="Edm.Byte" sap:label="Overall Score" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Teamplayer" Type="Edm.Byte" sap:label="Overall Score" sap:creatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Deleted" Type="Edm.Byte" sap:label="0 for false, 1 for true" sap:creatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<EntityContainer Name="YXM138_FLEXSO_SRV_02_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ProjectSet" EntityType="YXM138_FLEXSO_SRV_02.Project" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="UserSet" EntityType="YXM138_FLEXSO_SRV_02.User" sap:deletable="false" sap:searchable="true" sap:content-version="1"/><EntitySet Name="TeamMemberSet" EntityType="YXM138_FLEXSO_SRV_02.TeamMember" sap:deletable="false" sap:searchable="true"
+				sap:content-version="1"/><EntitySet Name="UserProjectSet" EntityType="YXM138_FLEXSO_SRV_02.UserProject" sap:deletable="false" sap:searchable="true"
+				sap:content-version="1"/><EntitySet Name="EvalSet" EntityType="YXM138_FLEXSO_SRV_02.Eval" sap:deletable="false" sap:searchable="true" sap:content-version="1"/></EntityContainer><atom:link rel="self" href="http://r41z.ucc.ovgu.de:443/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="http://r41z.ucc.ovgu.de:443/sap/opu/odata/SAP/YXM138_FLEXSO_SRV_02/$metadata" -->
+
 				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
