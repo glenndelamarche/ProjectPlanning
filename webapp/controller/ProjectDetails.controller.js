@@ -308,7 +308,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					}
 				}.bind(this)
 			});
+
 			var dropdown = new sap.m.ComboBox('comboboxManagers');
+
 			
 			  var itemTemplate = new sap.ui.core.ListItem({
 			  text : "{Name}",
