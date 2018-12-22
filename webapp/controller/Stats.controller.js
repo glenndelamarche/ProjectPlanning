@@ -44,6 +44,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
+			this.getView().byId("avgGraph").bindData("/EvalAvgSet");
 			
 
 		},

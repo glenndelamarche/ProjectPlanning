@@ -2,7 +2,7 @@
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.chart.data">
     <Page title="Stats details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="" title="AVG Scores" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="" title="Average Scores" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
@@ -13,7 +13,7 @@
             </FlexBox>
 			            <viz:VizFrame vizProperties="{ title: {text : 'AVG Scores', visible : true}, plotArea: {dataPointSize: {max: 30,min: 5},dataLabel: { visible: true}}}"  id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType='info/bar' width="100%" >
 									<viz:dataset>
-										<viz.data:FlattenedDataset data="{/EvalAvgSet}">
+										<viz.data:FlattenedDataset id="avgGraph" >
 											<viz.data:dimensions>
 												<viz.data:DimensionDefinition name="users" value="{Name}"/>
 											</viz.data:dimensions>

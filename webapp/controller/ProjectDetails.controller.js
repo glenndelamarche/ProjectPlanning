@@ -70,9 +70,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oView = this.getView();
 			oView.byId('comboboxManagerU').setSelectedKey(oView.byId("managerId").getText());
 			var date = new Date(oView.byId('startDate').getText());
-			this.getView().byId('startDateU').setDateValue(date);
+			if (date !== null)
+				this.getView().byId('startDateU').setDateValue(date);
+			date = null;
 			date = new Date(oView.byId('endDate').getText());
-			this.getView().byId('endDateU').setDateValue(date);	
+			if (date !== null)
+				this.getView().byId('endDateU').setDateValue(date);	
 		},
 		_onOverflowToolbarButtonPress: function(oEvent) {
 
