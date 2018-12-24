@@ -66,16 +66,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			
 		},
 		getValuesForUpdate: function(oEvent){
-			//update
+			//getManagerInComboBox
 			var oView = this.getView();
 			oView.byId('comboboxManagerU').setSelectedKey(oView.byId("managerId").getText());
-			var date = new Date(oView.byId('startDate').getText());
-			if (date !== null)
-				this.getView().byId('startDateU').setDateValue(date);
-			date = null;
-			date = new Date(oView.byId('endDate').getText());
-			if (date !== null)
-				this.getView().byId('endDateU').setDateValue(date);	
+			
+			//getDates
+			var startdate = new Date(oView.byId('startDate').getText());
+			if (!isNaN(startdate.getTime())){
+				this.getView().byId('startDateU').setDateValue(startdate);
+			} else {
+				this.getView().byId('startDateU').setValue(null);
+			}
+			var enddate = new Date(oView.byId('endDate').getText());
+			if (!isNaN(enddate.getTime())){
+				this.getView().byId('endDateU').setDateValue(enddate);	
+			} else {
+				this.getView().byId('endDateU').setValue(null);
+			}
 		},
 		_onOverflowToolbarButtonPress: function(oEvent) {
 

@@ -1,3 +1,6 @@
+/*eslint-disable no-console, no-alert*/
+/*global history*/
+
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover16", "./Popover22",
@@ -41,7 +44,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				};
 				this.getView().bindObject(oPath);
 			}
-
+			
+		var oTable = this.getView().byId('avgevals');
+			oTable.bindElement({path : "/EvalAvgSet("+2+")"});
+			
 		},
 		_onIconPress: function(oEvent) {
 

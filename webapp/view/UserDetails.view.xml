@@ -185,7 +185,7 @@
                     <IconTabSeparator icon="" iconDensityAware="false"/>
                     <IconTabFilter icon="sap-icon://notes" iconColor="Default" text="Evaluation" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="avgevals" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -220,7 +220,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Communication" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="80" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{AvgCom}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
