@@ -5,47 +5,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover4", "./Popover3", "./Popover2", "./Popover11",
 	"./utilities",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/model/FilterType",
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Popover4, Popover3, Popover2, Popover11, Utilities, History, Filter,FilterOperator,FilterType) {
+], function(BaseController, MessageBox, Popover4, Popover3, Popover2, Popover11, Utilities, History) {
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.ProjectDetails", {
 		handleRouteMatched: function(oEvent) {
-			//main
+			var sAppId = "App5bf2850a07da730110b7b171";
+			var oParams = {};
 			var oArgument = oEvent.getParameter("arguments").SelectedItem;
-			var oView = this.getView();
-			oView.bindElement({
+			
+			this.getView().bindElement({
 				path: "/ProjectSet(" + oArgument + ")"
 				});
-			
-			//managername
-			var oText = oView.byId("managerName");
-			
-			var managerId = oView.byId("managerId").getText();
-			if (!isNaN(managerId)){
-				oView.getModel().read("/UserSet("+managerId+")", {
-				  success: function(oRetrievedResult) { 
-				  	var jModel = new sap.ui.model.json.JSONModel(oRetrievedResult);
-					sap.ui.getCore().setModel(jModel);
-				  	oText.setText(jModel.getProperty("/Name"));
-				  },
-				  error: function(oError) { oText.setText(""); }
-				});
-			}
-			//teammembers
-			var oSelect, oBinding, aFilters;
-			var sFilterValue = oArgument; // I assume you can get the filter value from somewhere...
-			oSelect = this.getView().byId("teamMembers"); //get the reference to your Select control
-			oBinding = oSelect.getBinding("items");
-			aFilters = [];
-			
-			if (sFilterValue){
-			    aFilters.push( new sap.ui.model.Filter("ProjectId", sap.ui.model.FilterOperator.EQ, oArgument) );
-			}
-			oBinding.filter(aFilters, FilterType.Application);  //apply the filter
 		},
 		_onOverflowToolbarButtonPress: function(oEvent) {
 

@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover16" xmlns="sap.m">
     <ResponsivePopover contentHeight="400px" contentWidth="350px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="View Evaluation" verticalScrolling="true" visible="true">
         <content>
-            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+            <Table id="evalItems" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/UserEvalSet' }">
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                         <content>
@@ -28,7 +28,7 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Communication" text="" titleActive="false" visible="true"/>
-                            <Text text="7" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="{Communication}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">

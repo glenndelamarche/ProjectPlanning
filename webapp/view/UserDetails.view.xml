@@ -1,16 +1,18 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.UserDetails" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:chart="sap.chart" xmlns:data="sap.chart.data">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" controllerName="com.sap.build.standard.untitledPrototype.controller.UserDetails">
     <Page title="User details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="" title="Wout Buelens" icon="sap-icon://employee-pane" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="" title="{Name}" icon="sap-icon://employee-pane" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
             </ObjectHeader>
+            <Text id="userId" text="{UserId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false   "/>
             <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
             <IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
                 <items>
                     <IconTabFilter icon="sap-icon://hint" iconColor="Default" text="Info" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
+                            
                             <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -38,79 +40,79 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="First name" text="" titleActive="false" visible="true"/>
-                                            <Text text="Wout" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Firstname}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Last name" text="" titleActive="false" visible="true"/>
-                                            <Text text="Buelens" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Lastname}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Email" text="" titleActive="false" visible="true"/>
-                                            <Text text="Wout@mail.com" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Email}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Phone" text="" titleActive="false" visible="true"/>
-                                            <Text text="0471112233" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Phone}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Birthdate" text="" titleActive="false" visible="true"/>
-                                            <Text text="05/01/1998" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="Birthdate" text="{Birthdate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Gender" text="" titleActive="false" visible="true"/>
-                                            <Text text="Male" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Gender}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Begin date" text="" titleActive="false" visible="true"/>
-                                            <Text text="30/02/2018" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="BeginDate" text="{BeginDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Nationality" text="" titleActive="false" visible="true"/>
-                                            <Text text="Belg" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Nationality}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Street" text="" titleActive="false" visible="true"/>
-                                            <Text text="Nijverheidskaai" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Street}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: House number" text="" titleActive="false" visible="true"/>
-                                            <Text text="170" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{HouseNumber}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Zipcode" text="" titleActive="false" visible="true"/>
-                                            <Text text="1070" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Zipcode}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: City" text="" titleActive="false" visible="true"/>
-                                            <Text text="Anderlecht" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{City}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Country" text="" titleActive="false" visible="true"/>
-                                            <Text text="België" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Country}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -120,7 +122,7 @@
                     <IconTabSeparator icon="" iconDensityAware="false"/>
                     <IconTabFilter icon="sap-icon://attachment" iconColor="Default" text="Projects" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="projects" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/UserProjectSet' }">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -157,13 +159,13 @@
                                     </Column>
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="Manager" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="Begin date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="End Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
@@ -171,11 +173,11 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <ObjectIdentifier title="Project1" text="ID: PRO001" titleActive="false" visible="true"/>
-                                            <Text text="EHB" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="Developer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="01/01/2018 - 02/02/2018" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <ObjectIdentifier title="{Name}" text="ID: {ProjectId}" titleActive="false" visible="true"/>
+                                            <Text text="{Company}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Role}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{StartDate}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{EndDate}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -185,7 +187,7 @@
                     <IconTabSeparator icon="" iconDensityAware="false"/>
                     <IconTabFilter icon="sap-icon://notes" iconColor="Default" text="Evaluation" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="AvgEvaluations" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -193,15 +195,6 @@
                                         </content>
                                     </Toolbar>
                                 </infoToolbar>
-                                <headerToolbar>
-                                    <OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
-                                        <content>
-                                            <Title text="AVG EVALUATION" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
-                                            <ToolbarSpacer width=""/>
-                                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                                        </content>
-                                    </OverflowToolbar>
-                                </headerToolbar>
                                 <columns>
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
@@ -220,55 +213,47 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Communication" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="80" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="InputCom" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Quality" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="80" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="InputQual" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="80" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="InputQuan" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Motivation" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="70" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="InputMoti" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <Text text="Teamplayer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="60" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text id="InputTeam" text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="TOTAL AVG EVALUATION" text="" titleActive="false" visible="true"/>
-                                            <ObjectIdentifier title="80" text="" titleActive="false" visible="true"/>
+                                            <ObjectIdentifier id="InputTot" title="" text="" titleActive="false" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <chart:Chart id="sap_IconTabBar_Page_0-content-sap_m_IconTabBar-1542620724394-77sdlztqj8nkhqxnrxje8rw45_S5-items-sap_m_IconTabFilter-1543243521891-content-sap_chart_LineChart-1543244511366" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="line" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
-                                <chart:dimensions>
-                                    <data:Dimension name="__id" label="Skills" role="category" textProperty="dim0"/>
-                                </chart:dimensions>
-                                <chart:measures>
-                                    <data:Measure name="mea0" label="Score" role="axis2"/>
-                                </chart:measures>
-                            </chart:Chart>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="evaluations" width="auto" noDataText="Not Evaluated" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/UserEvalSet' }">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -281,14 +266,14 @@
                                         <content>
                                             <Title text="EVALUATIONS" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
                                             <ToolbarSpacer width=""/>
-                                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="OnExcelAssets2"/>
                                         </content>
                                     </OverflowToolbar>
                                 </headerToolbar>
                                 <columns>
                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="Project name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="Proj name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
@@ -298,21 +283,33 @@
                                         </header>
                                         <footer/>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="Manager" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="Commn." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="Motivation" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                                         <header>
-                                            <Text text="View evaluation" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="Quality" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Teamplayer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </header>
                                         <footer/>
                                     </Column>
@@ -320,12 +317,13 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <ObjectIdentifier title="Project1" text="ID: PRO001" titleActive="false" visible="true"/>
-                                            <Text text="Developer" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="03/01/2018" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
+                                            <ObjectIdentifier title="{ProjName}" text="ID: {ProjectId}" titleActive="false" visible="true"/>
+                                            <Text text="{Role}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Communication}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Motivation}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Quality}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Quantity}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{Teamplayer}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -335,7 +333,6 @@
                     <IconTabSeparator icon="" iconDensityAware="false"/>
                     <IconTabFilter icon="sap-icon://settings" iconColor="Default" text="Edit" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
                             <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -360,88 +357,100 @@
                                     </Column>
                                 </columns>
                                 <items>
+                                	<ColumnListItem type="Active">
+                                        <cells>
+                                            <ObjectIdentifier title="Begindate" text="" titleActive="false" visible="true"/>
+                                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd" id="BeginDateU"/>
+                                        </cells> 
+                                    </ColumnListItem>
+                                	 <ColumnListItem type="Inactive">
+                                        <cells>
+                                            <ObjectIdentifier title="UserId" text="" titleActive="false" visible="false"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="false" value="{UserId}" id="UserId"/>
+                                        </cells>
+                                    </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="First name" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Firstname}" id="Firstname"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Last name" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Lastname}" id="Lastname"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Email" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Email}" id="Email"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Phone" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Phone}" id="Phone"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Birthdate" text="" titleActive="false" visible="true"/>
-                                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
-                                        </cells>
+                                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd" id="BirthdateU"/>
+                                        </cells> 
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Gender" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Gender}" id="Gender"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Nationality" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Nationality}" id="Nationality"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Street" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Street}" id="Street"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: House number" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{HouseNumber}" id="HouseNumber"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem type="Active">
+                                        <cells>
+                                            <ObjectIdentifier title="Address: Bus" text="" titleActive="false" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Bus}" id="Bus"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Zipcode" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Zipcode}" id="Zipcode"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: City" text="" titleActive="false" visible="true"/>
-                                            <ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
-                                                <items>
-                                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                                </items>
-                                            </ComboBox>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{City}" id="City"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Address: Country" text="" titleActive="false" visible="true"/>
-                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" value="{Country}" id="Country"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                                            <Button text="ARCHIVE PROJECT" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onUpdateUser"/>
+                                            <Button text="ARCHIVE USER" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="archiveUser" cd:userId="{UserId}"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>

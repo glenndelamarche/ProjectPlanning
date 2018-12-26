@@ -205,8 +205,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		},
 		_onObjectListItemPress1: function(oEvent) {
-
+				
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
+			
+			// Get Property of the Clicked Item. i.e. PO number of the item which was clicked
+			var selectItem = oBindingContext.toString().match(/\d/g);
+			selectItem = selectItem.join("");
+			
+			// Tell the Router to Navigate To Route_PODetail which is linked to V_PODetail view
+			this.oRouter.navTo("UserDetails", { SelectedItem: selectItem});
+			
+			
+			
+		/*	var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
 
 			return new Promise(function(fnResolve) {
 				this.doNavigate("UserDetails", oBindingContext, fnResolve, "");
@@ -214,7 +225,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				if (err !== undefined) {
 					MessageBox.error(err.message);
 				}
-			});
+			});*/
 
 		},
 		_onButtonPress: function(oEvent) {
@@ -232,7 +243,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onButtonPress1: function(oEvent) {
 
-			var sPopoverName = "Popover9"; // +PROJECT
+			var sPopoverName = "Popover9";
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 
@@ -253,7 +264,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		},
 		_onButtonPress2: function(oEvent) {
 
-			var sPopoverName = "Popover10"; // +USER
+			var sPopoverName = "Popover10";
 			this.mPopovers = this.mPopovers || {};
 			var oPopover = this.mPopovers[sPopoverName];
 

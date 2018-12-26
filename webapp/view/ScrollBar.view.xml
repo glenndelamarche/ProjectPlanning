@@ -15,7 +15,7 @@
                                     </Toolbar>
                                 </headerToolbar>
                                 <items>
-                                    <ObjectListItem title="{Name}" numberState="None" type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress" number="{ProjectId}">
+                                    <ObjectListItem intro="" title="{Name}" numberUnit="" numberState="None" type="Navigation" selected="false" showMarkers="false" number="{ProjectId}" press="_onObjectListItemPress">
                                         <attributes/>
                                         <firstStatus/>
                                         <secondStatus/>
@@ -26,7 +26,7 @@
                     </IconTabFilter>
                     <IconTabFilter icon="sap-icon://group" iconColor="Default" text="Users" count="" design="Vertical" showAll="false" textDirection="RTL" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress1">
+                            <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" itemPress="_onObjectListItemPress1" items="{/UserSet}">
                                 <infoToolbar/>
                                 <headerToolbar>
                                     <Toolbar enabled="true" visible="true" width="" design="Solid">
@@ -36,17 +36,7 @@
                                     </Toolbar>
                                 </headerToolbar>
                                 <items>
-                                    <ObjectListItem intro="" title="Wout Buelens" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
-                                        <attributes/>
-                                        <firstStatus/>
-                                        <secondStatus/>
-                                    </ObjectListItem>
-                                    <ObjectListItem intro="" title="Glenn De La Marche" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
-                                        <attributes/>
-                                        <firstStatus/>
-                                        <secondStatus/>
-                                    </ObjectListItem>
-                                    <ObjectListItem intro="" title="Tom Van der Beken" number="" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
+                                    <ObjectListItem intro="" title="{Name}" number="{UserId}" numberUnit="" numberState="None" type="Active" selected="false" showMarkers="false">
                                         <attributes/>
                                         <firstStatus/>
                                         <secondStatus/>

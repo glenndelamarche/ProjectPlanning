@@ -1,12 +1,11 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.sap.build.standard.untitledPrototype.controller.ProjectDetails">
     <Page title="Project details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="{Company}" title="{Name}  " icon="sap-icon://group-2" number="ID: {ProjectId}" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="Company" title="{Name}  " icon="sap-icon://group-2" number="ID: {ProjectId}" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
             </ObjectHeader>
-            <Text id="projectId" text="{ProjectId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
             <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
             <IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
                 <items>
@@ -51,8 +50,7 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                                            <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="managerName"/>
-                                            <Text text="{ManagerId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false" id="managerId"/>
+                                            <Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -84,9 +82,9 @@
                         </content>
                     </IconTabFilter>
                     <IconTabSeparator icon="" iconDensityAware="false"/>
-                    <IconTabFilter id="teamTab" icon="sap-icon://kpi-managing-my-area" iconColor="Default" text="Team" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                    <IconTabFilter icon="sap-icon://kpi-managing-my-area" iconColor="Default" text="Team" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table id="teamMembers" width="auto" noDataText="No members" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/TeamMemberSet' }"> 
+                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -133,11 +131,27 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <ObjectIdentifier id="userInfo" title="{Name}" text="ID: {UserId}" titleActive="false" visible="true"/>
-                                            <ObjectIdentifier text="" titleActive="false" visible="true" title="{Role}"/>
+                                            <ObjectIdentifier title="Wout Buelens" text="ID: 5589" titleActive="false" visible="true"/>
+                                            <ObjectIdentifier title="Developer" text="" titleActive="false" visible="true"/>
                                             <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1" />
-                                            
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1"/>
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem type="Active">
+                                        <cells>
+                                            <ObjectIdentifier title="Glenn Delamarche" text="ID: 48492" titleActive="false" visible="true"/>
+                                            <ObjectIdentifier title="Developer" text="" titleActive="false" visible="true"/>
+                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem type="Active">
+                                        <cells>
+                                            <ObjectIdentifier title="Tom Van der Beken" text="ID: 24799" titleActive="false" visible="true"/>
+                                            <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
+                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
