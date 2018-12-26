@@ -51,6 +51,59 @@ sap.ui.define([
 			}
 		},
 
+		
+		_onArchiveUser: function(){
+			var userId = $.sap.userId;
+			var oModel = this.getView().getModel(); 
+				//create your json object (based on the odata/cds!!)
+				var oData = {
+						UserId : parseInt(userId,10),
+						Firstname : null,
+						Lastname : null,
+						Email: null,
+						Phone : null,
+						//AddressId: null,
+						Street: null,
+						HouseNumber: null,
+						Bus: null,
+						Zipcode: null,
+						City: null,
+						Country: null,
+						Birthdate: null,
+						Gender: null,
+						Nationality: null,
+						BeginDate: null, 
+						Deleted : 1
+				};
+					//(only for update/insert //get csfr token)
+					jQuery.ajax("/",{
+						  type: "GET",
+						  contentType: 'application/json',
+						  dataType: 'json',
+						  beforeSend: function(xhr){
+						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
+						  },
+						  success : function(response) {
+						  	jQuery.ajaxSetup({
+						      beforeSend: function(xhr) {
+						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
+						      }
+						    });
+						  }
+						});
+					oModel.update("/UserSet("+userId+")", oData, {
+					  merge: true, //updates changed fields
+					  success: function() {  },
+					  error: function(oError) {  }
+					});
+					sap.m.MessageToast.show('User #'+userId+' archived');
+		},
+
+
+		setUserId: function(userId){
+			$.sap.userId = userId;
+		},
+
 		close: function() {
 			this._oControl.close();
 		},

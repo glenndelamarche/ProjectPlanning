@@ -4,11 +4,11 @@
             <Title text="Are you sure?" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" class="sapUiLargeMarginBegin"/>
         </content>
         <beginButton>
-            <Button text="Yes" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+            <Button text="Archive" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onArchiveUser"/>
         </beginButton>
         <customHeader/>
         <endButton>
-            <Button text="Close" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
         </endButton>
         <subHeader/>
     </ResponsivePopover>

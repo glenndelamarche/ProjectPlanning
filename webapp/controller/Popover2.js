@@ -67,6 +67,10 @@ sap.ui.define([
 			return {};
 
 		},
+
+	//	_onButtonPress: function() {
+
+		//	this.close();
 		
 		_onDeleteMember: function() {
 			var projectId = this.getView().byId("projectId").getText();
@@ -101,6 +105,7 @@ sap.ui.define([
 					  success: function() {  },
 					  error: function(oError) {  }
 					});
+
 		},
 		onInit: function() {
 			this._oDialog = this.getControl();

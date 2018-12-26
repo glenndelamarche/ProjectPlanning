@@ -5,6 +5,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover4", "./Popover3", "./Popover2", "./Popover11",
 	"./utilities",
+
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/FilterType",
@@ -14,12 +15,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 
 ], function(BaseController, MessageBox, Popover4, Popover3, Popover2, Popover11, Utilities, History, Filter,FilterOperator,FilterType, Export, ExportTypeCSV) {
+
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.ProjectDetails", {
 		handleRouteMatched: function(oEvent) {
-			//main
+			var sAppId = "App5bf2850a07da730110b7b171";
+			var oParams = {};
 			var oArgument = oEvent.getParameter("arguments").SelectedItem;
+
+			
+			/*this.getView().bindElement({
+				path: "/ProjectSet(" + oArgument + ")"
+				})*/
+
 			$.sap.projectId = oArgument;
 
 			var oView = this.getView();
@@ -73,6 +82,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.getView().byId('startDateU').setDateValue(date);
 			date = new Date(oView.byId('endDate').getText());
 			this.getView().byId('endDateU').setDateValue(date);	
+
 		},
 		_onOverflowToolbarButtonPress: function(oEvent) {
 
