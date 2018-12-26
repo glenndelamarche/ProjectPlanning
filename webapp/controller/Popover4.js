@@ -1,5 +1,3 @@
-/*eslint-disable no-console, no-alert*/
-/*global history*/
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
 	"sap/m/MessageBox",
@@ -55,6 +53,7 @@ sap.ui.define([
 
 		close: function() {
 			this._oControl.close();
+		
 		},
 
 		setRouter: function(oRouter) {
@@ -65,22 +64,7 @@ sap.ui.define([
 			return {};
 
 		},
-		_onButtonPress: function() {
-			this.close();
-		},
-		getCSRFToken: function () {	
-			$.get('CSRFTokenManager.do', function(data) {
-			   var send = XMLHttpRequest.prototype.send,
-			   token =data;
-			   document.cookie='X-CSRF-Token='+token;
-			   XMLHttpRequest.prototype.send = function(data) {
-			       this.setRequestHeader('X-CSRF-Token',token);
-			       //dojo.cookie("X-CSRF-Token", "");
-			
-			       return send.apply(this, arguments);
-			   };
-});
-		},
+		
 		_onAddMember: function(){
 			//get all inserted/needed fields BY ID (you can access fields from detail page)
 			var projectId = this.getView().byId("projectId").getText();
@@ -107,23 +91,19 @@ sap.ui.define([
 						  beforeSend: function(xhr){
 						    xhr.setRequestHeader('X-CSRF-Token', 'fetch');
 						  },
-						  complete : function(response) {
-						    jQuery.ajaxSetup({
-						      beforeSend: function(xhr) {
+						  done : function(response) {
 						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
-						      }
-						    });
-						  }
-						});
+						    }});
 					//oModel.update("</yourset>", oData<created_entity)
 					oModel.create("/TeamMemberSet", oData, {
 					  merge: true, //updates changed fields
 					  success: function() { },
-					  error: function(oError) { console.log(oError); }
+					  error: function(oError) { }
 					});
-			}
-			
+					
+					}
 		},
+		
 		onInit: function() {
 			var dropdown = new sap.m.ComboBox('comboboxUsers');
 			
@@ -138,7 +118,6 @@ sap.ui.define([
 		},
 		onExit: function() {
 			this._oDialog.destroy();
-
 		}
 
 	});

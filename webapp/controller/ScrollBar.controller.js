@@ -1,6 +1,5 @@
 /*eslint-disable no-console, no-alert*/
 /*global history*/
-
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./Popover9", "./Popover10",
@@ -216,6 +215,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}
 			});
 
+		},
+		onSelectChanged: function(oEvent){
+			 var key =oEvent.getParameters().key;
+            if(key==='3') {
+              	this.oRouter.navTo("Stats");
+            }
 		},
 		_onButtonPress: function(oEvent) {
 			var oBindingContext = oEvent.getSource().getBindingContext();
