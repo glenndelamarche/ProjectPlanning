@@ -8,7 +8,7 @@
         </beginButton>
         <customHeader/>
         <endButton>
-            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="close"/>
         </endButton>
         <subHeader/>
     </ResponsivePopover>

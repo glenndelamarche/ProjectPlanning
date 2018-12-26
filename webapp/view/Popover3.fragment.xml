@@ -1,8 +1,9 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.untitledPrototype.controller.Popover3" xmlns="sap.m">
-    <ResponsivePopover contentHeight="650px" contentWidth="1000px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="Add evaluation" verticalScrolling="true" visible="true">
+    <ResponsivePopover contentHeight="420px" contentWidth="400px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0" placement="Right" showHeader="true" title="Add evaluation" verticalScrolling="true" visible="true">
         <content>
-            <Title text="Wout Buelens" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" class="sapUiLargeMarginBegin"/>
-            <ObjectIdentifier title="" text="" titleActive="false" visible="true"/>
+        	<FlexBox alignItems="Center" justifyContent="Center">
+            <ObjectIdentifier class="sapUiSmallMarginTop" id="userEvalName" title="" text="" titleActive="false" visible="true"/>
+            </FlexBox>
             <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -21,7 +22,7 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Score /10" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Score (%)" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                         </header>
                         <footer/>
                     </Column>
@@ -30,43 +31,58 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Communication" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true"/>
-                        </cells>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                            <TextArea id="communication" rows="1" required="false" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true" change="checkNumber"/>
+                            <Text text="%" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        	</FlexBox>
+                    	</cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Quality" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                            <TextArea id="quality" rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true" change="checkNumber"/>
+                            <Text text="%" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        	</FlexBox>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Quantity" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                            <TextArea id="quantity" rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true" change="checkNumber"/>
+                            <Text text="%" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        	</FlexBox>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Motivation" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                            <TextArea id="motivation" rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true" change="checkNumber"/>
+                            <Text text=" %" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        	</FlexBox>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Teamplayer" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <FlexBox alignItems="Center" justifyContent="Center">
+                            	<TextArea id="teamplayer" required="true" rows="1" placeholder="" cols="2" maxLength="0" wrapping="None" enabled="true" visible="true" change="checkNumber"/>
+                            	<Text text=" %" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        	</FlexBox>
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
-            <TextArea rows="5" placeholder="Add additional description" cols="110" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+            <TextArea id="description" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" rows="5" placeholder="Add additional description" cols="100" maxLength="255" wrapping="None" enabled="true" visible="true"/>
         </content>
         <beginButton>
-            <Button text="Save" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+            <Button text="Save" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onSave"/>
         </beginButton>
         <customHeader/>
         <endButton>
-            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onClose"/>
         </endButton>
         <subHeader/>
     </ResponsivePopover>
