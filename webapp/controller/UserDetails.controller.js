@@ -17,26 +17,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.UserDetails", {
 		handleRouteMatched: function(oEvent) {
-			
-			
 			//main
-			
-			var sAppId = "App5bf2850a07da730110b7b171";
-
 			var oArgument = oEvent.getParameter("arguments").SelectedItem;
 			$.sap.userId = oArgument;
 
 			var oView = this.getView();
-			
+			this.getView().byId("content").destroyItems();
 			oView.bindElement({
 				path: "/UserSet(" + oArgument + ")"
 			});
 			
 			//userProjects
-			
 			var oSelect, oBinding, aFilters;
-			var sFilterValue = oArgument; // I assume you can get the filter value from somewhere...
-			oSelect = this.getView().byId("projects"); //get the reference to your Select control
+			var sFilterValue = oArgument; 
+			oSelect = this.getView().byId("projects"); 
 			oBinding = oSelect.getBinding("items");
 			aFilters = [];
 			
@@ -65,50 +59,47 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			// assuming that you are using the default model  
 				return oItem.getBindingContext().getObject();
 			});
-			
-			
-			
-			
-		
-			
-			 oView.getModel().read("/EvalAvgSet("+$.sap.userId+")", {
+			var that = this;
+			oView.getModel().read("/EvalAvgSet("+$.sap.userId+")", {
 				  success: function(oRetrievedResult) { 
 				  	
 				  
 				  	var jModel = new sap.ui.model.json.JSONModel(oRetrievedResult);
 					sap.ui.getCore().setModel(jModel);
 					if(jModel.getProperty("/UserId") === 0 && jModel.getProperty("/Name") === "Empty") {
-				   	oView.byId("InputCom").setText("Not Evaluated");
-				   	oView.byId("InputMoti").setText("Not Evaluated");
-				  	oView.byId("InputQual").setText("Not Evaluated");
-				  	oView.byId("InputQuan").setText("Not Evaluated");
-				  	oView.byId("InputTeam").setText("Not Evaluated");
-				  	oView.byId("InputTot").setTitle("Not Evaluated");
+					   	oView.byId("InputCom").setText("Not Evaluated");
+					   	oView.byId("InputMoti").setText("Not Evaluated");
+					  	oView.byId("InputQual").setText("Not Evaluated");
+					  	oView.byId("InputQuan").setText("Not Evaluated");
+					  	oView.byId("InputTeam").setText("Not Evaluated");
+					  	oView.byId("InputTot").setTitle("Not Evaluated");
 				   } else {
-				   	oView.byId("InputCom").setText(Number(jModel.getProperty("/AvgCom")).toPrecision(4));
-				   	oView.byId("InputMoti").setText(Number(jModel.getProperty("/AvgMot")).toPrecision(4));
-				  	oView.byId("InputQual").setText(Number(jModel.getProperty("/AvgQual")).toPrecision(4));
-				  	oView.byId("InputQuan").setText(Number(jModel.getProperty("/AvgQuan")).toPrecision(4));
-				  	oView.byId("InputTeam").setText(Number(jModel.getProperty("/AvgTeam")).toPrecision(4));
-				  	oView.byId("InputTot").setTitle(Number(jModel.getProperty("/TotScore")).toPrecision(4));
+					   	oView.byId("InputCom").setText(Number(jModel.getProperty("/AvgCom")).toPrecision(4));
+					   	oView.byId("InputMoti").setText(Number(jModel.getProperty("/AvgMot")).toPrecision(4));
+					  	oView.byId("InputQual").setText(Number(jModel.getProperty("/AvgQual")).toPrecision(4));
+					  	oView.byId("InputQuan").setText(Number(jModel.getProperty("/AvgQuan")).toPrecision(4));
+					  	oView.byId("InputTeam").setText(Number(jModel.getProperty("/AvgTeam")).toPrecision(4));
+					  	oView.byId("InputTot").setTitle(Number(jModel.getProperty("/TotScore")).toPrecision(4));
+					  	$.sap.ChartCom = Number(jModel.getProperty("/AvgCom")).toPrecision(4);
+					  	$.sap.ChartMoti = Number(jModel.getProperty("/AvgMot")).toPrecision(4);
+					  	$.sap.ChartQual = Number(jModel.getProperty("/AvgQual")).toPrecision(4);
+					  	$.sap.ChartQuan = Number(jModel.getProperty("/AvgQuan")).toPrecision(4);
+					  	$.sap.ChartTeam = Number(jModel.getProperty("/AvgTeam")).toPrecision(4);
+					  	that.buildAvgUserChart();
 				   }
 					//$.sap.ChartCom = Number(jModel.getProperty("/AvgCom")).toPrecision(4);
 				  	//oView.byId("InputCom").setText($.sap.ChartCom);
-				  	
 				  },
 				    error: function(oError) { 
-				  	oView.byId("InputCom").setText("Not evaluated");
-				  	oView.byId("InputMoti").setText("Not evaluated");
-				  	oView.byId("InputQual").setText("Not evaluated");
-				  	oView.byId("InputQuan").setText("Not evaluated");
-				  	oView.byId("InputTeam").setText("Not evaluated");
-				  	oView.byId("InputTot").setTitle("Not evaluated");
+					  	oView.byId("InputCom").setText("Not evaluated");
+					  	oView.byId("InputMoti").setText("Not evaluated");
+					  	oView.byId("InputQual").setText("Not evaluated");
+					  	oView.byId("InputQuan").setText("Not evaluated");
+					  	oView.byId("InputTeam").setText("Not evaluated");
+					  	oView.byId("InputTot").setTitle("Not evaluated");
 				  }
 				});
-			 
-		//	}
-			
-	
+
 			this.getValuesForUpdate();
 
 		},
@@ -122,6 +113,71 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.getView().byId('BirthdateU').setDateValue(date);	
 		},
 		
+		buildAvgUserChart: function(){
+			var oPopOver = new sap.viz.ui5.controls.Popover();
+			var oVizFrame = new sap.viz.ui5.controls.VizFrame({
+				vizType : "info/line",
+				uiConfig : {applicationSet : "fiori"
+				}
+			});
+			
+			
+			var cData;
+				cData = [{
+					"Skills": "Communication",
+					"Score": $.sap.ChartCom
+				}, {
+					"Skills": "Quantity",
+					"Score": $.sap.ChartQuan
+				}, {
+					"Skills": "Quality",
+					"Score": $.sap.ChartQual
+				}, {
+					"Skills": "Motivation",
+					"Score": $.sap.ChartMoti
+				}, {
+					"Skills": "Teamplayer",
+					"Score": $.sap.ChartTeam
+				}];
+			
+				
+			var oModel = new sap.ui.model.json.JSONModel(cData);
+				var oDataset = new sap.viz.ui5.data.FlattenedDataset({
+				 	dimensions: [
+				 		{name: 'Skills', value: "{Skills}"}
+				 	],
+				 	measures: [
+				 		{name: 'Score', value: '{Score}'}
+				 	],
+				 	data: {
+				 		path: "/"
+				 	}
+				 });
+		
+				oVizFrame.setDataset(oDataset);
+				oVizFrame.setModel(oModel);
+				oVizFrame.setVizProperties({
+			        title: {
+			            text: ""
+			        }
+			    });
+				var feedPrimaryValues = new sap.viz.ui5.controls.common.feeds.FeedItem({
+					'uid' : "valueAxis",
+					'type' : "Measure",
+					'values' : ["Score"]
+				}), feedAxisLabels = new sap.viz.ui5.controls.common.feeds.FeedItem({
+					'uid' : "categoryAxis",
+					'type' : "Dimension",
+					'values' : ["Skills"]
+				});
+	
+				oVizFrame.removeAllFeeds(); 	
+				oVizFrame.addFeed(feedAxisLabels);
+				oVizFrame.addFeed(feedPrimaryValues);
+				this.getView().byId("content").addItem(oVizFrame);
+			oPopOver.connect(oVizFrame.getVizUid());
+
+		},
 		
 		getODataDateFromDatePicker: function (datePickerInstance) {
 			var yyyymmdd = datePickerInstance;
@@ -358,17 +414,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	
 		_onSavePress: function() {
 			var oModel = this.getView().getModel();
-   var oEntry = {};
-	oEntry.UserId = this.getView().byId("UserId").getValue();
-	oEntry.Fistname = this.getView().byId("Firstname").getValue();
-
-   oModel.update ("/UserSet('" + oEntry.UserId + "')", oEntry, {
-    method: "PUT",
-    success: function(data) {
-    },
-    error: function(e) {
-    }
-   });
+		   var oEntry = {};
+			oEntry.UserId = this.getView().byId("UserId").getValue();
+			oEntry.Fistname = this.getView().byId("Firstname").getValue();
+		
+		   oModel.update ("/UserSet('" + oEntry.UserId + "')", oEntry, {
+		    method: "PUT",
+		    success: function(data) {
+		    },
+		    error: function(e) {
+		    }
+		   });
 		},
 		
 		applyFiltersAndSorters: function(sControlId, sAggregationName, chartBindingInfo) {
@@ -447,7 +503,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}.bind(this)
 			});
 			
-		},
-		
+		}
 	});
 }, /* bExport= */ true); 

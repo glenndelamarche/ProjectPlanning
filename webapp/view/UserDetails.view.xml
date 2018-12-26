@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" controllerName="com.sap.build.standard.untitledPrototype.controller.UserDetails">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" xmlns:viz="sap.viz.ui5.controls" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.build.standard.untitledPrototype.controller.UserDetails">
     <Page title="User details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
             <ObjectHeader intro="" title="{Name}" icon="sap-icon://employee-pane" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
@@ -95,6 +95,12 @@
                                         <cells>
                                             <ObjectIdentifier title="Address: House number" text="" titleActive="false" visible="true"/>
                                             <Text text="{HouseNumber}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem type="Active">
+                                        <cells>
+                                            <ObjectIdentifier title="Address: Bus" text="" titleActive="false" visible="true"/>
+                                            <Text text="{Bus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="{= ${Bus} !== 0}"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -253,6 +259,7 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
+                            <FlexBox alignItems="Center" justifyContent="Center" id="content"/>
                             <Table id="evaluations" width="auto" noDataText="Not Evaluated" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/UserEvalSet' }">
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -361,13 +368,8 @@
                                         <cells>
                                             <ObjectIdentifier title="Begindate" text="" titleActive="false" visible="true"/>
                                             <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd" id="BeginDateU"/>
-                                        </cells> 
-                                    </ColumnListItem>
-                                	 <ColumnListItem type="Inactive">
-                                        <cells>
-                                            <ObjectIdentifier title="UserId" text="" titleActive="false" visible="false"/>
                                             <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="false" value="{UserId}" id="UserId"/>
-                                        </cells>
+                                        </cells> 
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
@@ -449,8 +451,11 @@
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onUpdateUser"/>
+                                        	<ObjectIdentifier title="" text="" titleActive="false" visible="false"/>
+                                        	<FlexBox>
+                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiMediumMarginEnd" press="_onUpdateUser"/>
                                             <Button text="ARCHIVE USER" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="archiveUser" cd:userId="{UserId}"/>
+                                        	</FlexBox>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
