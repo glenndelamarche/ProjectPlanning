@@ -26,54 +26,52 @@
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Project Name" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea id="txtName"  rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Company" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea id="txtCompany" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Budget" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea id="txtBudget" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Start-date" text="" titleActive="false" visible="true"/>
-                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                            <DatePicker id="datStartDate" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="End-date" text="" titleActive="false" visible="true"/>
-                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                            <DatePicker id="datEndDate" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Description" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="2" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea id="txtDesc" rows="2" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Deliverables url" text="" titleActive="false" visible="true"/>
-                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                            <TextArea id="txtTrello" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                         </cells>
                     </ColumnListItem>
                     <ColumnListItem type="Active">
                         <cells>
                             <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                            <ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
-                                <items>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                    <core:Item text="Item" enabled="true" key="Item"/>
-                                </items>
+                            <ComboBox id="ddlManager" editable="true" items="{path : '/UserSet'}" placeholder="Search" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+                        		<items >
+                    				<core:Item text="{Name}" enabled="true" key="{UserId}"/>
+                				</items>
                             </ComboBox>
                         </cells>
                     </ColumnListItem>
@@ -81,7 +79,7 @@
             </Table>
         </content>
         <beginButton>
-            <Button text="Add" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+            <Button text="Add" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAddPress"/>
         </beginButton>
         <customHeader/>
         <endButton>

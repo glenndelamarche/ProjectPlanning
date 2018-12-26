@@ -1,34 +1,32 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Stats" xmlns="sap.m" xmlns:chart="sap.chart" xmlns:data="sap.chart.data">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Stats" xmlns="sap.m" xmlns:chart="sap.chart" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls" xmlns:data="sap.chart.data">
     <Page title="Stats details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="" title="Highest AVG Score" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="" title="AVG Scores" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
             </ObjectHeader>
-            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-            <chart:Chart id="sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637380231" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
-                <chart:dimensions>
-                    <data:Dimension name="__id" label="Users" role="category" textProperty="dim0"/>
-                </chart:dimensions>
-                <chart:measures>
-                    <data:Measure name="mea0" label="AVG Score" role="axis2"/>
-                </chart:measures>
-            </chart:Chart>
-            <ObjectHeader intro="" title="Lowest AVG Score" number="" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
-                <attributes/>
-                <statuses/>
-                <markers/>
-            </ObjectHeader>
-            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-            <chart:Chart id="sap_IconTabBar_Page_0-87kc0ivf53grds3vjuu9ph8s3_S3-yem1ic2acf9gevkchllfsqd34_S4-content-sap_chart_BarChart-1542637390493" width="100%" height="450px" visibleDimensions="__id" visibleMeasures="mea0" chartType="bar" selectionMode="Single" uiConfig="{}" vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}">
-                <chart:dimensions>
-                    <data:Dimension name="__id" label="Users" role="category" textProperty="dim0"/>
-                </chart:dimensions>
-                <chart:measures>
-                    <data:Measure name="mea0" label="AVG Score" role="axis2"/>
-                </chart:measures>
-            </chart:Chart>
+            <FlexBox alignItems="End" justifyContent="End">
+            	<Text text="Download all evalutations" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" class="sapUiSmallMarginEnd"/>
+            	<OverflowToolbarButton text="Download all Evaluations" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiSmallMarginEnd" press="OnExcelAssets"/>
+            </FlexBox>
+			            <viz:VizFrame vizProperties="{ title: {text : 'AVG Scores', visible : true}, plotArea: {dataPointSize: {max: 30,min: 5},dataLabel: { visible: true}}}"  id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType='info/bar' width="100%" >
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{/EvalAvgSet}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="users" value="{Name}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="AVGscore" value="{TotScore}" />
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem id='valueAxisFeed' type="Measure" uid="valueAxis" values="AVGscore" />
+										<viz.feeds:FeedItem id='categoryAxisFeed' type="Dimension" uid="categoryAxis" values="users"/>
+									</viz:feeds>
+						</viz:VizFrame>
         </content>
         <footer>
             <OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
