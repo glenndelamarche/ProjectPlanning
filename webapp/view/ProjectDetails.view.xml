@@ -1,16 +1,12 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.sap.build.standard.untitledPrototype.controller.ProjectDetails" >
-    <App>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="com.sap.build.standard.untitledPrototype.controller.ProjectDetails">
     <Page title="Project details" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="Company" title="{Name}  " icon="sap-icon://group-2" number="ID: {ProjectId}" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
+            <ObjectHeader intro="{Company}" title="{Name}  " icon="sap-icon://group-2" number="ID: {ProjectId}" numberUnit="" numberState="None" titleActive="false" backgroundDesign="Translucent" condensed="false" visible="true">
                 <attributes/>
                 <statuses/>
                 <markers/>
             </ObjectHeader>
-          
             <Text id="projectId" text="{ProjectId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
-            <Text id="company" text="{Company}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
-
             <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
             <IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
                 <items>
@@ -55,7 +51,8 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                                            <Text text="Tom Van der Beken" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" id="managerName"/>
+                                            <Text text="{ManagerId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false" id="managerId"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -67,13 +64,13 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Start-date" text="" titleActive="false" visible="true"/>
-                                            <Text id="startDate" text="{StartDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{StartDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="End-date" text="" titleActive="false" visible="true"/>
-                                            <Text id="endDate" text="{EndDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{EndDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
@@ -87,9 +84,9 @@
                         </content>
                     </IconTabFilter>
                     <IconTabSeparator icon="" iconDensityAware="false"/>
-                    <IconTabFilter icon="sap-icon://kpi-managing-my-area" iconColor="Default" text="Team" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                    <IconTabFilter id="teamTab" icon="sap-icon://kpi-managing-my-area" iconColor="Default" text="Team" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                         <content>
-                            <Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                            <Table id="teamMembers" width="auto" noDataText="No members" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{ path : '/TeamMemberSet' }"> 
                                 <infoToolbar>
                                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                                         <content>
@@ -103,7 +100,7 @@
                                             <Title text="TEAM MEMBERS" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
                                             <ToolbarSpacer width=""/>
                                             <OverflowToolbarButton text="Settings" type="Transparent" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onOverflowToolbarButtonPress"/>
-                                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="OnExcelAssets"/>
+                                            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                                         </content>
                                     </OverflowToolbar>
                                 </headerToolbar>
@@ -136,35 +133,11 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-
-                               <!--             <ObjectIdentifier title="Wout Buelens" text="ID: 5589" titleActive="false" visible="true"/>
-                                            <ObjectIdentifier title="Developer" text="" titleActive="false" visible="true"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
-                                        </cells>
-                                    </ColumnListItem>
-                                    <ColumnListItem type="Active">
-                                        <cells>
-                                            <ObjectIdentifier title="Glenn Delamarche" text="ID: 48492" titleActive="false" visible="true"/>
-                                            <ObjectIdentifier title="Developer" text="" titleActive="false" visible="true"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/>
-                                        </cells>
-                                    </ColumnListItem>
-                                    <ColumnListItem type="Active">
-                                        <cells>
-                                            <ObjectIdentifier title="Tom Van der Beken" text="ID: 24799" titleActive="false" visible="true"/>
-                                            <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true"/> -->
-
                                             <ObjectIdentifier id="userInfo" title="{Name}" text="ID: {UserId}" titleActive="false" visible="true"/>
                                             <ObjectIdentifier text="" titleActive="false" visible="true" title="{Role}"/>
-                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress" cd:userid="{UserId}" cd:username="{Name}"/>
-                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onDelete" cd:userid="{UserId}"/>
+                                            <core:Icon src="sap-icon://crm-service-manager" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
+                                            <core:Icon src="sap-icon://delete" size="24px" height="48px" width="48px" visible="true" press="_onIconPress1" />
                                             
-
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -197,21 +170,23 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Project name" text="" titleActive="false" visible="true"/>
-                                            <TextArea id="projectNameU" value="{Name}" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Description" text="" titleActive="false" visible="true"/>
-                                            <TextArea id="descriptionU" value="{Description}" rows="4" cols="55" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="4" cols="55" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Manager" text="" titleActive="false" visible="true"/>
-                                            <ComboBox id="comboboxManagerU" editable="true" items="{path : '/UserSet'}"  enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+                                            <ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
                                                 <items>
-                                                    <core:Item text="{Name}" enabled="true" key="{UserId}"/>
+                                                    <core:Item text="Item" enabled="true" key="Item"/>
+                                                    <core:Item text="Item" enabled="true" key="Item"/>
+                                                    <core:Item text="Item" enabled="true" key="Item"/>
                                                 </items>
                                             </ComboBox>
                                         </cells>
@@ -219,37 +194,31 @@
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Budget" text="" titleActive="false" visible="true"/>
-                                            <FlexBox>
-				                             <TextArea id="budgetU" value="{Budget}" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true" />
-				                            <Text text="EUR" class="sapUiTinyMarginBegin" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-				                        	</FlexBox>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Start-date" text="" titleActive="false" visible="true"/>
-                                            <DatePicker id="startDateU" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd" />
+                                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="End-date" text="" titleActive="false" visible="true"/>
-                                            <DatePicker id="endDateU" width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+                                            <DatePicker width="auto" displayFormat="medium" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
                                             <ObjectIdentifier title="Deliverables" text="" titleActive="false" visible="true"/>
-                                            <TextArea id="deliverablesU" value="{DeliverablesUrl}" rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
+                                            <TextArea rows="1" cols="25" maxLength="0" wrapping="None" enabled="true" visible="true"/>
                                         </cells>
                                     </ColumnListItem>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                        	<ObjectIdentifier title="" text="" titleActive="false" visible="false"/>
-                                        	<FlexBox>
-                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiMediumMarginEnd" press="_onUpdateProject"/>
-                                            <Button text="ARCHIVE PROJECT" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="archiveProject" cd:projectId="{ProjectId}"/>
-                                        </FlexBox>
+                                            <Button text="SAVE" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                                            <Button text="ARCHIVE PROJECT" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
                                         </cells>
                                     </ColumnListItem>
                                 </items>
@@ -269,5 +238,4 @@
         </footer>
         <headerContent/>
     </Page>
-    </App>
 </mvc:View>
