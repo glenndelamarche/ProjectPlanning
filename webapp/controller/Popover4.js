@@ -64,12 +64,6 @@ sap.ui.define([
 			return {};
 
 		},
-
-		//_onButtonPress: function() {
-
-		//	this.close();
-
-
 		
 		_onAddMember: function(){
 			//get all inserted/needed fields BY ID (you can access fields from detail page)
@@ -108,11 +102,17 @@ sap.ui.define([
 					});
 					
 					}
-
 		},
 		
 		onInit: function() {
-
+			var dropdown = new sap.m.ComboBox('comboboxUsers');
+			
+			  var itemTemplate = new sap.ui.core.ListItem({
+			  text : "{Name}",
+			  key :"{UserId}"
+			  });
+			
+			dropdown.bindItems("/UserSet",itemTemplate);
 			this._oDialog = this.getControl();
 
 		},
