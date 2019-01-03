@@ -4,7 +4,7 @@
             <Title text="Are you sure?" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" class="sapUiLargeMarginBegin"/>
         </content>
         <beginButton>
-            <Button text="Yes" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+            <Button text="Yess" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
         </beginButton>
         <customHeader/>
         <endButton>

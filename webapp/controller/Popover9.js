@@ -146,7 +146,10 @@ sap.ui.define([
 				//oModel.update("</yourset>", oData<created_entity)
 				oModel.create("/ProjectSet", oData, {
 					merge: true, //updates changed fields
-					success: function () {},
+					success: function () {
+							sap.m.MessageToast.show('Project ' + name + " created");
+							
+					},
 					error: function (oError) {
 						console.log(oError);
 					}

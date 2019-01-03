@@ -161,7 +161,7 @@ sap.ui.define([
 					merge: true, //updates changed fields
 					success: function () {
 							sap.m.MessageToast.show('User '+firstName+" "+lastName+" created");
-
+							
 					},
 					error: function (oError) {
 						console.log(oError);
