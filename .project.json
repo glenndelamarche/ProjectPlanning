@@ -6,9 +6,6 @@
         "/webapp/view/ProjectDetails.view.xml": {
             "entitySet": ""
         }, 
-        "/webapp/view/UserDetailsBroken.view.xml": {
-            "entitySet": ""
-        }, 
         "/webapp/view/Stats.view.xml": {
             "entitySet": ""
         }, 
