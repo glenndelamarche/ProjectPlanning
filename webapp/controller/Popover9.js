@@ -134,21 +134,17 @@ sap.ui.define([
 					dataType: 'json',
 					beforeSend: function (xhr) {
 						xhr.setRequestHeader('X-CSRF-Token', 'fetch');
-					},
-					complete: function (response) {
-						jQuery.ajaxSetup({
-							beforeSend: function (xhr) {
-								oModel.setRequestHeader("X-CSRF-Token", response.getResponseHeader('X-CSRF-Token'));
-							}
-						});
-					}
+					}, done : function(response) {
+						        oModel.setRequestHeader("X-CSRF-Token",response.getResponseHeader('X-CSRF-Token'));
+						    }
 				});
+				var that = this;
 				//oModel.update("</yourset>", oData<created_entity)
 				oModel.create("/ProjectSet", oData, {
 					merge: true, //updates changed fields
 					success: function () {
 							sap.m.MessageToast.show('Project ' + name + " created");
-							
+							that.close();
 					},
 					error: function (oError) {
 						console.log(oError);
